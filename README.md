@@ -2,6 +2,8 @@
 
 App web demo có frontend, backend, database và lưu chứng từ, dựa trên report **The Blazers – Cửu Long G-Sync**. Giao diện lấy định hướng từ HTML portal xanh do nhóm cung cấp. Toàn bộ dữ liệu mẫu là giả lập, không phải dữ liệu vận hành nhà máy.
 
+**Hướng dẫn thao tác demo:** [Quy trình từng workflow, vai trò và nút bấm](quy%20tr%C3%ACnh.md).
+
 ![Hồ sơ EX-0041 hoàn tất](docs/screenshots/hoan-tat-ex0041.png)
 
 ## Hướng dẫn chạy app

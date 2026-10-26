@@ -1,5 +1,7 @@
 # Kịch bản quay demo 6–8 phút
 
+Hướng dẫn chi tiết từng workflow, nút bấm và cách xử lý khi bị chặn: [quy trình.md](../quy%20tr%C3%ACnh.md).
+
 ## 1. Bối cảnh và dữ liệu (1 phút)
 
 - Chọn Tác nghiệp, vai trò Kho vận.
