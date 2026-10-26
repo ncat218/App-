@@ -6,7 +6,30 @@ App web demo có frontend, backend, database và lưu chứng từ, dựa trên 
 
 ## Clone và chạy
 
-Cài **Git** và **Node.js 24 LTS** trước. Không cần tài khoản Cloudflare, Microsoft 365 hoặc khóa AI để chạy local.
+### Chuẩn bị laptop Windows
+
+Cài hai phần mềm sau từ trang chính thức:
+
+| Phần mềm | Link tải | Chọn bản nào? |
+| --- | --- | --- |
+| **Git** — tải mã nguồn từ GitHub | [Tải Git cho Windows](https://git-scm.com/install/windows) | Chọn **Git for Windows/x64 Setup** cho laptop Intel/AMD; máy Windows ARM chọn ARM64. |
+| **Node.js** — chạy frontend và backend của app | [Tải Node.js chính thức](https://nodejs.org/en/download) | Chọn **v24 LTS → Windows → Windows Installer (.msi)**, đúng kiến trúc máy. npm đi kèm bộ cài, không cần tải riêng. |
+
+Cài theo các bước mặc định, giữ tùy chọn thêm vào **PATH**. Sau khi cài xong, đóng rồi mở lại PowerShell hoặc Terminal và kiểm tra:
+
+```powershell
+git --version
+node --version
+npm.cmd --version
+```
+
+Cả ba lệnh cần hiện số phiên bản; Node.js cần hiện `v24.x.x`. Nếu báo không tìm thấy lệnh, mở lại Terminal; nếu vẫn lỗi, kiểm tra lại việc cài đặt và PATH.
+
+Nếu laptop dùng macOS/Linux, chọn đúng hệ điều hành tại [trang cài Git](https://git-scm.com/install/) và [trang tải Node.js](https://nodejs.org/en/download), sau đó dùng các lệnh `npm` bên dưới.
+
+Không cần tài khoản Cloudflare, Microsoft 365 hoặc khóa AI để chạy local.
+
+### Tải mã nguồn và khởi chạy
 
 ```bash
 git clone https://github.com/ncat218/App-.git
