@@ -1,0 +1,72 @@
+{
+  "cutoff": "2026-10-22T08:00",
+  "planVersion": "KH-2026-10-v1",
+  "stocks": [
+    {
+      "id": "KALI",
+      "name": "Kali · KCl",
+      "qty": 150,
+      "held": 20,
+      "allocated": 30,
+      "reserve": 20,
+      "unit": "tấn",
+      "source": "KHO-2210 / KT-2210 / QC-008",
+      "confirmed": true
+    },
+    {
+      "id": "UREA",
+      "name": "Urê",
+      "qty": 320,
+      "held": 0,
+      "allocated": 20,
+      "reserve": 40,
+      "unit": "tấn",
+      "source": "KHO-2210 / QC-009",
+      "confirmed": true
+    },
+    {
+      "id": "DAP",
+      "name": "DAP",
+      "qty": 85,
+      "held": 5,
+      "allocated": 10,
+      "reserve": 15,
+      "unit": "tấn",
+      "source": "KHO-2210 / QC-010",
+      "confirmed": true
+    }
+  ],
+  "needs": [
+    {
+      "id": "LSX-0041",
+      "material": "KALI",
+      "qty": 220,
+      "at": "2026-10-24T07:00",
+      "source": "KH-2026-10-v1 / BOM-K01"
+    },
+    {
+      "id": "LSX-0042",
+      "material": "UREA",
+      "qty": 180,
+      "at": "2026-10-24T07:00",
+      "source": "KH-2026-10-v1 / BOM-U01"
+    },
+    {
+      "id": "LSX-0043",
+      "material": "DAP",
+      "qty": 60,
+      "at": "2026-10-24T07:00",
+      "source": "KH-2026-10-v1 / BOM-D01"
+    }
+  ],
+  "shipments": [
+    {
+      "id": "SHIP-90",
+      "material": "KALI",
+      "qty": 90,
+      "readyAt": "2026-10-26T06:00",
+      "status": "planned",
+      "source": "KH-TM-014 / Lịch sẵn sàng dự kiến"
+    }
+  ]
+}
