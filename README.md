@@ -43,9 +43,9 @@ npm.cmd run dev
 
 `npm.cmd run dev` tương đương `npm run dev`, đồng thời tránh lỗi PowerShell chặn `npm.ps1`. Các bản sửa giao diện hoặc logic thông thường chỉ cần các bước trên, không cần clone hay cài đặt lại. Nếu bản cập nhật có thay đổi thư viện hoặc cấu trúc database, chạy thêm `npm.cmd ci` hoặc `npm.cmd run setup` theo hướng dẫn đi kèm bản cập nhật, trước khi chạy app.
 
-### Cài đặt lần đầu: chuẩn bị laptop Windows
+### Cài đặt lần đầu
 
-### Chuẩn bị laptop Windows
+#### Chuẩn bị laptop Windows
 
 Cài hai phần mềm sau từ trang chính thức:
 
@@ -68,7 +68,7 @@ Nếu laptop dùng macOS/Linux, chọn đúng hệ điều hành tại [trang c�
 
 Không cần tài khoản Cloudflare, Microsoft 365 hoặc khóa AI để chạy local.
 
-### Tải mã nguồn và khởi chạy
+#### Tải mã nguồn và khởi chạy
 
 ```bash
 git clone https://github.com/ncat218/App-.git
