@@ -4,7 +4,46 @@ App web demo có frontend, backend, database và lưu chứng từ, dựa trên 
 
 ![Hồ sơ EX-0041 hoàn tất](docs/screenshots/hoan-tat-ex0041.png)
 
-## Clone và chạy
+## Hướng dẫn chạy app
+
+### Chạy lại app sau khi đã cài đặt
+
+Dành cho các thành viên đã clone repo, cài thư viện và chạy `setup` thành công. Nếu app đang chạy trong PowerShell, nhấn **Ctrl+C** để dừng trước khi cập nhật.
+
+1. **Mở Windows PowerShell.**
+2. **Vào thư mục repo** (nơi đã clone app):
+
+   ```powershell
+   cd App-
+   ```
+
+   Lệnh trên dùng khi PowerShell đang ở thư mục chứa `App-`. Nếu đã clone vào thư mục người dùng như hướng dẫn trước, có thể dùng `cd "$env:USERPROFILE\App-"` từ bất kỳ thư mục nào. Nếu clone ở nơi khác, thay bằng đường dẫn tương ứng.
+
+3. **Cập nhật mã nguồn mới nhất từ GitHub**, sau khi đã vào thư mục `App-`:
+
+   ```powershell
+   git pull --ff-only
+   ```
+
+4. **Chạy app:**
+
+   ```powershell
+   npm.cmd run dev
+   ```
+
+5. **Mở địa chỉ `Local` được in trong PowerShell**, thường là **http://127.0.0.1:5173/**. Giữ cửa sổ PowerShell đang chạy trong lúc dùng app. Nhấn **Ctrl+C** khi muốn dừng.
+
+Tóm tắt các lệnh, chạy lần lượt sau khi mở PowerShell tại thư mục chứa repo:
+
+```powershell
+cd App-
+git pull --ff-only
+npm.cmd run dev
+```
+
+`npm.cmd run dev` tương đương `npm run dev`, đồng thời tránh lỗi PowerShell chặn `npm.ps1`. Các bản sửa giao diện hoặc logic thông thường chỉ cần các bước trên, không cần clone hay cài đặt lại. Nếu bản cập nhật có thay đổi thư viện hoặc cấu trúc database, chạy thêm `npm.cmd ci` hoặc `npm.cmd run setup` theo hướng dẫn đi kèm bản cập nhật, trước khi chạy app.
+
+### Cài đặt lần đầu: chuẩn bị laptop Windows
 
 ### Chuẩn bị laptop Windows
 
@@ -42,13 +81,6 @@ npm run dev
 Mở **http://localhost:5173**. `setup` build ứng dụng và áp dụng migration SQLite local. Lần chạy đầu có thể mất vài phút. Dữ liệu được tự khởi tạo khi mở app.
 
 Nếu PowerShell chặn `npm.ps1`, dùng `npm.cmd ci`, `npm.cmd run setup`, `npm.cmd run dev`.
-
-Các lần sau chỉ cần:
-
-```bash
-cd App-
-npm run dev
-```
 
 Chạy bản build ổn định để quay video:
 
