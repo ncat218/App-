@@ -1,64 +1,34 @@
-# Kiến trúc và đối chiếu report
+# Kiến trúc demo Governance v2
 
-## Ranh giới
+Web React/Vinext/TypeScript mô phỏng thiết kế report. Giữ D1 SQLite local, R2 local và trạng thái JSON theo owner/revision; chưa thay bằng Excel/Python, Power Automate/SharePoint, Nano hoặc tài khoản doanh nghiệp.
 
-App này hiện thực quy trình nghiệp vụ để quay demo. Mẫu HTML được dùng làm định hướng hình ảnh; các con số trang trí trong HTML không được dùng như kết quả thật. Mọi số đếm trên dashboard lấy từ database.
+## Nghiệp vụ và dữ liệu
 
-Report mô tả triển khai tận dụng Excel/Python, Microsoft 365 và Gemini. Bản web gom chúng thành ba lớp tương ứng. Chưa kết nối tài khoản Microsoft/Nano, chưa triển khai tại nhà máy. Thiết kế kết nối hệ thống thực tế phải được xác nhận riêng.
+- `lib/engine.ts`: đối soát, năm xác nhận theo dấu dữ liệu từng nguyên liệu, hai bảng cân đối chắc chắn/kế hoạch, phân kỳ hồ sơ, A/B, duyệt và thực thi.
+- `Inputs`: tồn tổng hợp kèm căn cứ loại trùng và lệnh phân bổ ngoài phạm vi; nhu cầu có scope; chuyến có phần đã nằm trong tồn, chứng từ/kỳ chốt, bốn mốc dự kiến/thực tế, xác nhận Kho vận/QA/KH-TM. Tổng loại trừ không tự chứng minh không chồng lặp.
+- `Case`: khóa sự kiện nguyên liệu + scope (mặc định tháng); mọi nhu cầu vẫn dùng chung tồn lũy kế, không tách tồn ảo giữa các scope. Lưu input snapshot, needIds, version, lịch sử, quyết định đã ban hành, yêu cầu thay đổi, phần thực thi phải chờ.
+- B có mảng stages và carry; kiểm tra mọi mốc của các đợt và nhu cầu khác trong chân trời xử lý. 220 = 80 + 90 + 50. B cho phép nguồn dự kiến có điều kiện; chốt thực tế ở xác nhận đợt và đóng.
+- B cần Phân xưởng + KH-TM xác minh; Giám đốc chỉ kiểm tra/trình. B đóng khi kế hoạch điều chỉnh đúng phiên bản, đợt thực hiện đủ, nguồn sẵn sàng thực tế, và chuyển kỳ được tiếp nhận riêng. Không dùng plan ban đầu thay revised_plan.
+- A giữ lượng, lịch, QA, lệnh/nhận/release; bổ sung xác nhận Kho vận/Kế toán/QA trên đúng receiptId. Đổi lượng/ngày/mã nhận hủy xác nhận.
+- Evidence có version + executionId (mã đợt, lần nhận, kế hoạch). Chứng từ cũ không tự áp dụng, cần ghi căn cứ dùng lại. App kiểm tra siêu dữ liệu và xác nhận người, chưa tự thẩm định nội dung tệp.
+- Save không đổi nghiệp vụ không tăng input/case version. Save đổi urê không hủy Kali. Thay đổi tồn/nguồn của nguyên liệu ảnh hưởng các hồ sơ dùng nguồn đó; nhu cầu cùng phạm vi hoặc trước chân trời xử lý được xét như phụ thuộc. Nhu cầu ở kỳ tương lai độc lập không hủy quyết định của kỳ trước. Phần chưa thực hiện của hồ sơ bị ảnh hưởng phải chờ; chưa phân tích phụ thuộc cấp lô để chỉ dừng một phần đợt.
+- `close_verified`: đủ cân đối mới, đúng xác nhận chuyên môn, bằng chứng và lý do Giám đốc; phân biệt với close thực thi trong UI, JSON, tờ trình và KPI.
+- DATA_HOLD không phát kết quả chính thức, vẫn có risk_notice với người/hạn xác minh, chưa có nhắc việc SLA tự động.
 
-| Report | Hiện thực |
-| --- | --- |
-| Excel chuẩn hóa dữ liệu | Bốn bước nhập dữ liệu, bảng sửa trực tiếp, CSV/JSON |
-| Rule Engine Excel/Python/Pandas | `validate`, `calculate`, `proposalBalance` trong `lib/engine.ts` |
-| SharePoint/Lists + Power Automate | API `transition`, DB, tuyến duyệt, checklist, audit events |
-| Decision Passport | Case có số khóa, snapshot đầu vào, phương án, nhận định, nguồn, bằng chứng, quyết định, thực thi |
-| Phiên bản và Override_Log | InputVersion, case version, history snapshot, audit trước/sau nhận định và lý do |
-| Gemini | Backend gọi API tùy chọn; mẫu tự động được ghi nhãn rõ khi chưa có key/lỗi |
-| OCR / lệch tiêu hao | Chưa bật; là phân hệ mở rộng có điều kiện |
-| G-Score | N/A khi chưa có nhãn đối chiếu độc lập, SLA và dữ liệu đánh giá đầy đủ |
+## Gemini
 
-## API
+`lib/narrative.ts` nhận số khóa, lịch, phiên bản, phương án và mã căn cứ được phép. Kiểm tra JSON, trường bắt buộc và nguồn; bắt buộc người rà soát. Chỉ accepted/edited vào thân tờ trình; rejected nằm ở Review_Log cùng trước/sau, lý do, DATA/RULE/LLM/FLOW, người và version.
 
-- `GET /api/demo`: đọc/khởi tạo trạng thái của người dùng.
-- `POST /api/demo`: `{revision, role, action, payload}`. Backend kiểm tra điều kiện nghiệp vụ, ghi nhật ký, UPDATE với revision cũ để phát hiện xung đột.
-- `POST /api/files`: multipart `file`, tối đa 5 MB; lưu vào kho tệp của người dùng.
-- `GET /api/files?key=...`: chỉ tải tệp thuộc người dùng hiện tại, qua attachment download.
-- `GET /api/report?caseId=...`: báo cáo HTML đầy đủ, có nút in/lưu PDF; escape nội dung người dùng.
+Lưu requestedModel, modelVersion phản hồi, promptVersion, thời điểm, thành công/fallback/not-configured, usageMetadata nếu có. Không lưu key; lỗi chỉ ghi mã, không ghi response chứa dữ liệu nhạy cảm. Không có key vẫn chạy mẫu; chưa có lời gọi thực không được báo kết quả AI hoặc chi phí thật. Tham khảo [Google generateContent API](https://ai.google.dev/api/generate-content).
 
-Actions chính: `save_inputs`, `run`, `narrative`, `review_claim`, `proposal`, `confirm_proposal`, `evidence`, `submit`, `forward`, `approve`, `return`, `reject`, `execution`, `release`, `close`, `reset`.
+## API và lưu trữ
 
-## Trạng thái
+- GET/POST `/api/demo`: đọc/nâng schema v2, thực hiện transition; optimistic revision tránh ghi đè. Khi nâng dữ liệu cũ, giữ hồ sơ/lịch sử; hồ sơ mở cần xem xét lại, không tự cấp xác nhận chuyên môn.
+- `/api/files`: R2/local file upload/download ≤5 MB, theo owner.
+- `/api/report`: HTML in/PDF, escape nội dung; đồng bộ stages, carry, source actuals, xác nhận, quyết định, lý do kết thúc. JSON nguyên trạng qua dashboard/hồ sơ.
+- Nhóm action mới: confirm_input, confirm_input_shipment, risk_notice, reuse_evidence, source_actual, confirm_source, stage_execution, confirm_stage, confirm_carry, confirm_receipt, close_verified.
+- Không thay bảng SQL/thư viện trong bản này; schemaVersion nằm trong JSON. Không tự xóa dữ liệu local. Reset là thao tác demo có chủ ý, có xác nhận trên UI.
 
-```text
-draft → director_review → ceo_review → executing → closed
-           ↓                  ↓
-       needs_info          rejected
-           └── xác minh / sửa / trình lại ──→ director_review
+## Giới hạn triển khai
 
-save_inputs → needs_review (hồ sơ đang mở)
-run với dữ liệu hợp lệ → draft ở phiên bản mới
-```
-
-DATA_HOLD nằm ở chất lượng dữ liệu: không xóa hồ sơ, chặn số kết luận và chặn trình từ dữ liệu lỗi. Nếu chỉ thiếu ETA thì vẫn tính bảo thủ, giữ lượng chuyến và không cộng nguồn đó.
-
-## Cân đối
-
-U = tồn báo cáo - hàng chưa được phép dùng - phân bổ ngoài phạm vi. Các phần loại trừ được nhập dưới dạng đã chuẩn hóa, không chồng lặp.
-
-P(t) = U + tổng nguồn đủ điều kiện sẵn sàng trước t - tổng nhu cầu trong phạm vi từ thời điểm chốt đến t.
-
-Hai kịch bản: chắc chắn chỉ cộng chuyến released; kế hoạch cộng thêm planned được xác nhận lịch. unknown không được cộng. P >= S bình thường; 0 <= P < S cấp 1; P < 0 cấp 2.
-
-Nhận hàng được theo dõi tại hồ sơ và không tự sửa snapshot đã duyệt. Cân đối kỳ tiếp theo phải nhập bộ tồn/kế hoạch mới, loại chuyến đã vào tồn để tránh tính trùng.
-
-## Persistence và bảo mật demo
-
-Schema có một bản trạng thái JSON theo owner và revision; thích hợp demo nhỏ, không phải mô hình quan hệ tối ưu cho vận hành nhiều phòng ban. Events chỉ được thêm qua transition; reset được phép xóa phiên demo. Snapshot cũ lưu trong history khi đầu vào đổi.
-
-Local: owner mặc định `local-demo`. Hosting hỗ trợ identity header do dispatch cung cấp; app tách dữ liệu theo owner. Vai trò trong request là giả lập, người dùng có thể đổi để quay video. Kiểm tra vai trò trong state machine giúp kiểm chứng luồng nhưng không thay thế quyền tài khoản thực tế. Khi triển khai doanh nghiệp phải có membership, vai trò server-side và audit bất biến bên ngoài bản trạng thái.
-
-Tệp nằm trong R2/local emulator, tách khỏi JSON. Khóa và database local không được commit. Gemini chỉ nhận số khóa và nhận định mẫu khi được cấu hình; đầu ra được lưu chờ kiểm tra, không thay phép tính hay duyệt tự động.
-
-## Giới hạn cần kiểm chứng tiếp
-
-Độ mới dữ liệu, SLA/lịch làm việc, mức dự trữ và thẩm quyền xác nhận cụ thể cần SFG thống nhất. Kịch bản B trong demo dùng Giám đốc xác minh thay vai trò phân xưởng riêng. Chưa có bộ đối chiếu lịch sử nhà máy hoặc kết quả tiết kiệm thời gian thực tế. Bộ test tự động kiểm tra hiện thực phần lõi, không tự nhận hoàn thành mọi điều kiện nghiệm thu trong report.
+Chọn vai trò là mô phỏng, backend kiểm tra vai trò khai báo; chưa gắn vai trò với danh tính SFG. Chưa có audit bất biến bên ngoài payload; reset xóa phiên demo. DB local mỗi máy độc lập. Đồng bộ nhà máy, độ mới dữ liệu, quy mô mẻ thật, mức tồn, thẩm quyền và SLA cần thống nhất khi thí điểm. G-Score/Precision/Recall giữ N/A; không coi test mô phỏng là đo hiệu quả 40–50%.

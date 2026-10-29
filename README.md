@@ -4,7 +4,7 @@ App web demo có frontend, backend, database và lưu chứng từ, dựa trên 
 
 **Hướng dẫn thao tác demo:** [Quy trình từng workflow, vai trò và nút bấm](quy%20tr%C3%ACnh.md).
 
-![Hồ sơ EX-0041 hoàn tất](docs/screenshots/hoan-tat-ex0041.png)
+**Bản Governance v2:** B hai đợt 80 + 90 tấn, 50 tấn chuyển kỳ; xác nhận chuyên môn và chứng từ đúng phiên bản. [Đối chiếu yêu cầu / kiểm thử](docs/ACCEPTANCE.md).
 
 ## Hướng dẫn chạy app
 
@@ -44,6 +44,8 @@ npm.cmd run dev
 ```
 
 `npm.cmd run dev` tương đương `npm run dev`, đồng thời tránh lỗi PowerShell chặn `npm.ps1`. Các bản sửa giao diện hoặc logic thông thường chỉ cần các bước trên, không cần clone hay cài đặt lại. Nếu bản cập nhật có thay đổi thư viện hoặc cấu trúc database, chạy thêm `npm.cmd ci` hoặc `npm.cmd run setup` theo hướng dẫn đi kèm bản cập nhật, trước khi chạy app.
+
+**Riêng bản nâng Governance v2:** không đổi thư viện hoặc bảng SQL. Dữ liệu cũ được giữ; hồ sơ mở cần xem xét lại, không tự cấp xác nhận mới. Nếu muốn quay mới, sao lưu JSON rồi dùng “Đặt lại kịch bản” trong app. Đọc [quy trình.md](quy%20tr%C3%ACnh.md) vì các nút và vai trò B đã thay đổi.
 
 ### Cài đặt lần đầu
 
@@ -97,10 +99,10 @@ Mở URL mà terminal in ra (mặc định **http://127.0.0.1:8787**). Dữ li�
 
 1. **Tác nghiệp → Nhập dữ liệu:** xem bốn bước tiếp nhận, kiểm tra, xác nhận, chạy cân đối. Có thể sửa số, lịch hàng, nhập CSV/JSON và tải mẫu ngay trên app.
 2. **Cân đối:** Kali khả dụng 100 tấn, nhu cầu 220; SHIP-90 sẵn sàng 26/10 nên không cộng trước 24/10. Số dư chắc chắn -120; muốn giữ dự trữ 20 thì cần bù 140 tấn.
-3. **EX-0041:** thêm căn cứ giả lập; soạn và kiểm tra từng nhận định; lập phương án A hoặc B.
-4. Chuyển vai trò demo **KH-TM** để xác minh A; B được **Giám đốc Nhà máy** xác minh trong demo. Quy trình thực tế cần phân xưởng xác nhận tính khả thi.
+3. **EX-0041:** lập/lưu phương án A hoặc B trước, thêm căn cứ giả lập, soạn và kiểm tra từng nhận định.
+4. **Chuyển vai trò mô phỏng:** KH-TM xác minh A; **Phân xưởng + KH-TM** xác minh B. Năm xác nhận đầu vào tách riêng Kho vận/Kế toán/QA/Phân xưởng/KH-TM. Bộ mẫu ghi rõ xác nhận giả lập.
 5. **Kho vận** trình → **Giám đốc Nhà máy** kiểm tra/trình → **Tổng Giám đốc SFG** duyệt. Có nhánh từ chối và yêu cầu bổ sung có lý do.
-6. **Thực thi A:** nhận đủ 140 tấn trước ca, thêm lệnh cấp/mua và chứng từ nhận; **QA/QC** thêm phiếu giải phóng chất lượng rồi xác nhận được phép dùng.
+6. **Thực thi A:** 140 tấn trước ca, chứng từ đúng phiên bản/lần nhận; **Kho vận, Kế toán, QA/QC** xác nhận riêng. **B:** hai đợt 80 + 90 tấn; nguồn SHIP-90 phải có bốn mốc thực tế và ba xác nhận khi thực thi, kèm kế hoạch điều chỉnh và liên kết xử lý 50 tấn chuyển kỳ.
 7. **Giám đốc Nhà máy** kiểm tra và đóng hồ sơ. Thiếu lượng, trễ hạn hoặc thiếu bằng chứng sẽ bị backend chặn.
 8. Xem **Audit Trail**, xuất JSON/CSV hoặc xuất tờ trình đầy đủ qua hộp thoại in của trình duyệt. Dùng **Đặt lại kịch bản** ở vai trò Kho vận để quay lại từ đầu.
 
@@ -150,7 +152,7 @@ npm run build
 
 Nếu server local đang chạy tại cổng 8787, có thể chạy thêm `npm run test:api` để kiểm tra API/database/tải tệp/xuất tờ trình bằng dữ liệu test tách riêng.
 
-`npm test` kiểm tra 22 tình huống tự động của bản hiện thực này: cân đối, biên dự trữ, lịch hàng, nhiều ca, dữ liệu lỗi, phương án A/B, vai trò, phiên bản, trả lại và đóng hồ sơ. Bộ test này không phải kết quả pilot tại nhà máy và không thay thế toàn bộ bộ nghiệm thu trong report.
+`npm test` kiểm tra 68 tình huống tự động (22 nhóm hồi quy được cập nhật chốt Governance, B được thay bằng kiểm thử hai đợt; thêm các ca kiểm tra mới): cân đối, biên dự trữ, lịch hàng, nhiều ca, dữ liệu lỗi, phương án A/B, vai trò, phiên bản, trả lại và đóng hồ sơ. Các ca Gemini dùng mock được ghi rõ; không phải lời gọi thật, kết quả pilot nhà máy hay phép đo hiệu quả kinh tế. Xem [ma trận nghiệm thu](docs/ACCEPTANCE.md).
 
 ## Phạm vi demo
 
@@ -159,7 +161,7 @@ Nếu server local đang chạy tại cổng 8787, có thể chạy thêm `npm r
 - Không tạo G-Score giả. Các chỉ số cần đối chiếu độc lập/SLA hiển thị N/A khi thiếu căn cứ. Số lượng hồ sơ được tính từ database.
 - OCR và lệch tiêu hao theo mẻ là mô-đun mở rộng có điều kiện trong report, chưa bật trong bản demo lõi.
 - Mất mạng với app chạy local không ảnh hưởng thao tác cốt lõi; Gemini cần Internet. App hosted không có hàng đợi thao tác offline.
-- Dataset hiện chuẩn hóa lượng giữ và lượng phân bổ thành hai phần không chồng lặp. Khi nhập, cần loại trừ phần giao nhau trước; chuyến đã vào tồn đầu kỳ phải bỏ khỏi bảng hàng đang về. Hướng mở rộng là quản lý chi tiết theo lô để tự kiểm tra các giao nhau này.
+- Lượng giữ/phân bổ tổng hợp phải có biên bản loại trùng, danh sách lệnh ngoài phạm vi và xác nhận đúng vai trò; chưa tự đối soát mọi giao nhau theo lô. Chuyến đã trong tồn vẫn có thể giữ trong bảng hàng về với lượng đã nhập, chứng từ và kỳ chốt; chỉ phần chưa vào tồn được cộng thêm.
 
 ## Cấu trúc
 
