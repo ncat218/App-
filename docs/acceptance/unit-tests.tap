@@ -1,0 +1,418 @@
+TAP version 13
+# Subtest: 01 EX-0041: U=100, số dư -120, cần 140 để giữ dự trữ
+ok 1 - 01 EX-0041: U=100, số dư -120, cần 140 để giữ dự trữ
+  ---
+  duration_ms: 81.7357
+  type: 'test'
+  ...
+# Subtest: 02 urê bình thường
+ok 2 - 02 urê bình thường
+  ---
+  duration_ms: 8.1374
+  type: 'test'
+  ...
+# Subtest: 03 DAP dưới dự trữ cấp 1
+ok 3 - 03 DAP dưới dự trữ cấp 1
+  ---
+  duration_ms: 6.3215
+  type: 'test'
+  ...
+# Subtest: 04 biên bằng dự trữ và bằng 0
+ok 4 - 04 biên bằng dự trữ và bằng 0
+  ---
+  duration_ms: 62.6968
+  type: 'test'
+  ...
+# Subtest: 05 hàng trễ không cộng
+ok 5 - 05 hàng trễ không cộng
+  ---
+  duration_ms: 3.5013
+  type: 'test'
+  ...
+# Subtest: 06 lịch kịp: kế hoạch -30; chắc chắn -120
+ok 6 - 06 lịch kịp: kế hoạch -30; chắc chắn -120
+  ---
+  duration_ms: 79.8053
+  type: 'test'
+  ...
+# Subtest: 07 nguồn thực tế đủ bốn mốc và ba vai trò được tính chắc chắn
+ok 7 - 07 nguồn thực tế đủ bốn mốc và ba vai trò được tính chắc chắn
+  ---
+  duration_ms: 46.7296
+  type: 'test'
+  ...
+# Subtest: 08 lịch chưa rõ giữ 90 tấn; không cộng
+ok 8 - 08 lịch chưa rõ giữ 90 tấn; không cộng
+  ---
+  duration_ms: 49.5236
+  type: 'test'
+  ...
+# Subtest: 09 hai ca không dùng lại tồn: 100-70-60=-30
+ok 9 - 09 hai ca không dùng lại tồn: 100-70-60=-30
+  ---
+  duration_ms: 27.9016
+  type: 'test'
+  ...
+# Subtest: 10 chuyến trùng mã bị chặn
+ok 10 - 10 chuyến trùng mã bị chặn
+  ---
+  duration_ms: 12.9845
+  type: 'test'
+  ...
+# Subtest: 11 số âm, sai đơn vị, loại trừ vượt tồn bị chặn
+ok 11 - 11 số âm, sai đơn vị, loại trừ vượt tồn bị chặn
+  ---
+  duration_ms: 12.1782
+  type: 'test'
+  ...
+# Subtest: 12 DATA_HOLD không phát kết quả định lượng
+ok 12 - 12 DATA_HOLD không phát kết quả định lượng
+  ---
+  duration_ms: 13.6852
+  type: 'test'
+  ...
+# Subtest: 13 chạy lại không tạo trùng
+ok 13 - 13 chạy lại không tạo trùng
+  ---
+  duration_ms: 11.0015
+  type: 'test'
+  ...
+# Subtest: 14 A thiếu lượng/trễ không được lưu
+ok 14 - 14 A thiếu lượng/trễ không được lưu
+  ---
+  duration_ms: 26.8941
+  type: 'test'
+  ...
+# Subtest: 15 B hai đợt: 80+90+50=220; từng mốc còn 20
+ok 15 - 15 B hai đợt: 80+90+50=220; từng mốc còn 20
+  ---
+  duration_ms: 5.1691
+  type: 'test'
+  ...
+# Subtest: 16 thiếu nhận định/bằng chứng không trình
+ok 16 - 16 thiếu nhận định/bằng chứng không trình
+  ---
+  duration_ms: 25.5104
+  type: 'test'
+  ...
+# Subtest: 17 đúng tuyến và vai trò
+ok 17 - 17 đúng tuyến và vai trò
+  ---
+  duration_ms: 17.9027
+  type: 'test'
+  ...
+# Subtest: 18 thay số liên quan vô hiệu phiên bản đang trình
+ok 18 - 18 thay số liên quan vô hiệu phiên bản đang trình
+  ---
+  duration_ms: 10.9671
+  type: 'test'
+  ...
+# Subtest: 19 A đủ chứng từ và ba xác nhận mới đóng
+ok 19 - 19 A đủ chứng từ và ba xác nhận mới đóng
+  ---
+  duration_ms: 26.6696
+  type: 'test'
+  ...
+# Subtest: 20 B hai đợt: thiếu chuyển kỳ không đóng, đủ mới đóng; CSV roundtrip
+ok 20 - 20 B hai đợt: thiếu chuyển kỳ không đóng, đủ mới đóng; CSV roundtrip
+  ---
+  duration_ms: 41.4037
+  type: 'test'
+  ...
+# Subtest: 21 sửa hồ sơ trả lại tạo phiên bản giữ lịch sử
+ok 21 - 21 sửa hồ sơ trả lại tạo phiên bản giữ lịch sử
+  ---
+  duration_ms: 8.8179
+  type: 'test'
+  ...
+# Subtest: 22 đổi lượng/ngày nhận phải xác nhận lại
+ok 22 - 22 đổi lượng/ngày nhận phải xác nhận lại
+  ---
+  duration_ms: 16.8615
+  type: 'test'
+  ...
+# Subtest: 23 B đợt 1 quá 80 bị chặn dù số dư cuối đủ
+ok 23 - 23 B đợt 1 quá 80 bị chặn dù số dư cuối đủ
+  ---
+  duration_ms: 6.9983
+  type: 'test'
+  ...
+# Subtest: 24 B không cấu trúc nhiều đợt bị chặn; không nghiệm thu B một mốc cũ
+ok 24 - 24 B không cấu trúc nhiều đợt bị chặn; không nghiệm thu B một mốc cũ
+  ---
+  duration_ms: 6.3459
+  type: 'test'
+  ...
+# Subtest: 25 B tính cả nhu cầu khác cùng tồn
+ok 25 - 25 B tính cả nhu cầu khác cùng tồn
+  ---
+  duration_ms: 3.5024
+  type: 'test'
+  ...
+# Subtest: 26 SHIP-90 planned: lập B được, đợt 2 chưa thể xác nhận
+ok 26 - 26 SHIP-90 planned: lập B được, đợt 2 chưa thể xác nhận
+  ---
+  duration_ms: 13.2432
+  type: 'test'
+  ...
+# Subtest: 27 mới hoàn thành đợt 1: B vẫn chưa đóng
+ok 27 - 27 mới hoàn thành đợt 1: B vẫn chưa đóng
+  ---
+  duration_ms: 15.4908
+  type: 'test'
+  ...
+# Subtest: 28 kế hoạch ban đầu không thay kế hoạch điều chỉnh
+ok 28 - 28 kế hoạch ban đầu không thay kế hoạch điều chỉnh
+  ---
+  duration_ms: 33.9051
+  type: 'test'
+  ...
+# Subtest: 29 kế hoạch điều chỉnh sai phiên bản không hợp lệ
+ok 29 - 29 kế hoạch điều chỉnh sai phiên bản không hợp lệ
+  ---
+  duration_ms: 19.1241
+  type: 'test'
+  ...
+# Subtest: 30 chứng từ nhận khác lần không thay chứng từ lần hiện tại
+ok 30 - 30 chứng từ nhận khác lần không thay chứng từ lần hiện tại
+  ---
+  duration_ms: 26.8122
+  type: 'test'
+  ...
+# Subtest: 31 chuyến đã trong tồn đầu kỳ không cộng hai lần
+ok 31 - 31 chuyến đã trong tồn đầu kỳ không cộng hai lần
+  ---
+  duration_ms: 31.9007
+  type: 'test'
+  ...
+# Subtest: 32 thiếu căn cứ loại trùng không được tính chính thức
+ok 32 - 32 thiếu căn cứ loại trùng không được tính chính thức
+  ---
+  duration_ms: 45.1603
+  type: 'test'
+  ...
+# Subtest: 33 A0 chứa lệnh đang xét bị chặn
+ok 33 - 33 A0 chứa lệnh đang xét bị chặn
+  ---
+  duration_ms: 35.3195
+  type: 'test'
+  ...
+# Subtest: 34 đổi urê không làm mất hiệu lực hồ sơ kali
+ok 34 - 34 đổi urê không làm mất hiệu lực hồ sơ kali
+  ---
+  duration_ms: 11.6359
+  type: 'test'
+  ...
+# Subtest: 35 lưu không đổi không tạo phiên bản hoặc nhật ký thay đổi
+ok 35 - 35 lưu không đổi không tạo phiên bản hoặc nhật ký thay đổi
+  ---
+  duration_ms: 12.1552
+  type: 'test'
+  ...
+# Subtest: 36 quyết định đã ban hành vẫn tra cứu, không dùng để thực thi mới
+ok 36 - 36 quyết định đã ban hành vẫn tra cứu, không dùng để thực thi mới
+  ---
+  duration_ms: 13.8512
+  type: 'test'
+  ...
+# Subtest: 37 cùng nguyên liệu khác phạm vi mở hồ sơ riêng
+ok 37 - 37 cùng nguyên liệu khác phạm vi mở hồ sơ riêng
+  ---
+  duration_ms: 23.568
+  type: 'test'
+  ...
+# Subtest: 38 vai trò Kho vận không thay Kế toán hay Phân xưởng
+ok 38 - 38 vai trò Kho vận không thay Kế toán hay Phân xưởng
+  ---
+  duration_ms: 9.8705
+  type: 'test'
+  ...
+# Subtest: 39 mã kế hoạch bất kỳ không tự có hiệu lực
+ok 39 - 39 mã kế hoạch bất kỳ không tự có hiệu lực
+  ---
+  duration_ms: 15.055
+  type: 'test'
+  ...
+# Subtest: 40 planned thiếu lịch tự thành unknown khi lưu; giữ 90 tấn
+ok 40 - 40 planned thiếu lịch tự thành unknown khi lưu; giữ 90 tấn
+  ---
+  duration_ms: 30.6708
+  type: 'test'
+  ...
+# Subtest: 41 chỉ ETA / trạng thái released không biến thành chắc chắn
+ok 41 - 41 chỉ ETA / trạng thái released không biến thành chắc chắn
+  ---
+  duration_ms: 23.5148
+  type: 'test'
+  ...
+# Subtest: 42 nhận định bác bỏ không ở thân tờ trình, log có mã lỗi
+ok 42 - 42 nhận định bác bỏ không ở thân tờ trình, log có mã lỗi
+  ---
+  duration_ms: 6.9239
+  type: 'test'
+  ...
+# Subtest: 43 sửa nhận định có trước/sau, người, phiên bản; thiếu mã lỗi chặn
+ok 43 - 43 sửa nhận định có trước/sau, người, phiên bản; thiếu mã lỗi chặn
+  ---
+  duration_ms: 7.2547
+  type: 'test'
+  ...
+# Subtest: 44 DATA_HOLD vẫn lập thông báo có người và hạn; không có số chính thức
+ok 44 - 44 DATA_HOLD vẫn lập thông báo có người và hạn; không có số chính thức
+  ---
+  duration_ms: 3.5357
+  type: 'test'
+  ...
+# Subtest: 45 kết thúc theo xác minh: cân đối mới, bằng chứng, đúng vai trò
+ok 45 - 45 kết thúc theo xác minh: cân đối mới, bằng chứng, đúng vai trò
+  ---
+  duration_ms: 36.5147
+  type: 'test'
+  ...
+# Subtest: 46 thiếu xác nhận Kế toán nhận hàng: A không đóng
+ok 46 - 46 thiếu xác nhận Kế toán nhận hàng: A không đóng
+  ---
+  duration_ms: 15.1253
+  type: 'test'
+  ...
+# Subtest: 47 checklist tại trình không đổi khi thêm chứng từ muộn
+ok 47 - 47 checklist tại trình không đổi khi thêm chứng từ muộn
+  ---
+  duration_ms: 8.0792
+  type: 'test'
+  ...
+# Subtest: 48 nâng dữ liệu cũ giữ hồ sơ nhưng không cấp xác nhận mới
+ok 48 - 48 nâng dữ liệu cũ giữ hồ sơ nhưng không cấp xác nhận mới
+  ---
+  duration_ms: 12.9796
+  type: 'test'
+  ...
+# Subtest: 49 Gemini không key: mẫu tĩnh, không gọi mạng
+ok 49 - 49 Gemini không key: mẫu tĩnh, không gọi mạng
+  ---
+  duration_ms: 4.8233
+  type: 'test'
+  ...
+# Subtest: 50 Gemini thành công (mock): nguồn, model/token, tất cả pending
+ok 50 - 50 Gemini thành công (mock): nguồn, model/token, tất cả pending
+  ---
+  duration_ms: 32.5328
+  type: 'test'
+  ...
+# Subtest: 51 Gemini lỗi API (mock) dùng mẫu dự phòng
+ok 51 - 51 Gemini lỗi API (mock) dùng mẫu dự phòng
+  ---
+  duration_ms: 5.8874
+  type: 'test'
+  ...
+# Subtest: 52 Gemini sai cấu trúc (mock) không dùng phản hồi
+ok 52 - 52 Gemini sai cấu trúc (mock) không dùng phản hồi
+  ---
+  duration_ms: 6.0809
+  type: 'test'
+  ...
+# Subtest: 53 Gemini nguồn không tồn tại (mock) bị loại
+ok 53 - 53 Gemini nguồn không tồn tại (mock) bị loại
+  ---
+  duration_ms: 7.5722
+  type: 'test'
+  ...
+# Subtest: 54 Gemini thiếu trường bắt buộc (mock) bị loại
+ok 54 - 54 Gemini thiếu trường bắt buộc (mock) bị loại
+  ---
+  duration_ms: 5.9003
+  type: 'test'
+  ...
+# Subtest: 55 prompt có số khóa, nguồn, phiên bản, phương án và căn cứ
+ok 55 - 55 prompt có số khóa, nguồn, phiên bản, phương án và căn cứ
+  ---
+  duration_ms: 8.7603
+  type: 'test'
+  ...
+# Subtest: 56 xuất HTML/JSON cùng hai đợt, 50 chuyển kỳ, phiên bản
+ok 56 - 56 xuất HTML/JSON cùng hai đợt, 50 chuyển kỳ, phiên bản
+  ---
+  duration_ms: 8.1494
+  type: 'test'
+  ...
+# Subtest: 57 chứng từ cũ không tự đủ checklist sau trả lại; dùng lại có lý do
+ok 57 - 57 chứng từ cũ không tự đủ checklist sau trả lại; dùng lại có lý do
+  ---
+  duration_ms: 10.3236
+  type: 'test'
+  ...
+# Subtest: 58 giả checkbox B thực hiện không vượt backend
+ok 58 - 58 giả checkbox B thực hiện không vượt backend
+  ---
+  duration_ms: 15.6276
+  type: 'test'
+  ...
+# Subtest: 59 nguồn thay đổi hủy xác nhận và đợt phụ thuộc không đóng được
+ok 59 - 59 nguồn thay đổi hủy xác nhận và đợt phụ thuộc không đóng được
+  ---
+  duration_ms: 22.7254
+  type: 'test'
+  ...
+# Subtest: 60 thiếu 50 chuyển kỳ hoặc sai liên kết không đủ phương án
+ok 60 - 60 thiếu 50 chuyển kỳ hoặc sai liên kết không đủ phương án
+  ---
+  duration_ms: 10.8194
+  type: 'test'
+  ...
+# Subtest: 61 cùng nguyên liệu nhưng thêm nhu cầu kỳ tương lai độc lập không hủy quyết định kỳ trước
+ok 61 - 61 cùng nguyên liệu nhưng thêm nhu cầu kỳ tương lai độc lập không hủy quyết định kỳ trước
+  ---
+  duration_ms: 16.7105
+  type: 'test'
+  ...
+# Subtest: 62 đổi nhu cầu khác ở trước mốc vẫn ảnh hưởng Kali vì chung tồn
+ok 62 - 62 đổi nhu cầu khác ở trước mốc vẫn ảnh hưởng Kali vì chung tồn
+  ---
+  duration_ms: 16.3208
+  type: 'test'
+  ...
+# Subtest: 63 đảo thứ tự dòng không tạo phiên bản nghiệp vụ
+ok 63 - 63 đảo thứ tự dòng không tạo phiên bản nghiệp vụ
+  ---
+  duration_ms: 14.1671
+  type: 'test'
+  ...
+# Subtest: 64 chứng từ nhập có version cũ không tự đóng A
+ok 64 - 64 chứng từ nhập có version cũ không tự đóng A
+  ---
+  duration_ms: 18.4396
+  type: 'test'
+  ...
+# Subtest: 65 khác mã chuyến nhưng cùng lô khai báo bị giữ để đối soát
+ok 65 - 65 khác mã chuyến nhưng cùng lô khai báo bị giữ để đối soát
+  ---
+  duration_ms: 29.4333
+  type: 'test'
+  ...
+# Subtest: 66 chỉ vai trò chuyên môn được xác nhận dùng lại chứng từ chuyên môn
+ok 66 - 66 chỉ vai trò chuyên môn được xác nhận dùng lại chứng từ chuyên môn
+  ---
+  duration_ms: 6.9455
+  type: 'test'
+  ...
+# Subtest: 67 lịch dự kiến không được sẵn sàng trước QA dự kiến
+ok 67 - 67 lịch dự kiến không được sẵn sàng trước QA dự kiến
+  ---
+  duration_ms: 24.2826
+  type: 'test'
+  ...
+# Subtest: 68 mọi lần tạo nhận định đều chờ rà soát kể cả dùng mẫu khi chưa có key
+ok 68 - 68 mọi lần tạo nhận định đều chờ rà soát kể cả dùng mẫu khi chưa có key
+  ---
+  duration_ms: 6.0953
+  type: 'test'
+  ...
+1..68
+# tests 68
+# suites 0
+# pass 68
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1676.4584

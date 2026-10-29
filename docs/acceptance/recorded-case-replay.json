@@ -1,0 +1,22 @@
+{
+  "sourceCommit": "a69670b",
+  "note": "Offline replay of pre-existing QA fixtures; no app file download",
+  "results": [
+    {
+      "scenario": "A",
+      "expected": "closed",
+      "actual": "closed",
+      "version": 2,
+      "closureIssues": [],
+      "result": "PASS"
+    },
+    {
+      "scenario": "B",
+      "expected": "closed",
+      "actual": "closed",
+      "version": 1,
+      "closureIssues": [],
+      "result": "PASS"
+    }
+  ]
+}

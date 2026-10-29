@@ -1,0 +1,1005 @@
+{
+  "scenario": "B UI two stages, source hold, carry hold, then closed",
+  "expected": {
+    "status": "closed",
+    "closeKind": "execution",
+    "stages": [
+      80,
+      90
+    ],
+    "carry": 50
+  },
+  "input": {
+    "cutoff": "2026-10-22T08:00",
+    "planVersion": "KH-2026-10-v1",
+    "stocks": [
+      {
+        "id": "KALI",
+        "name": "Kali · KCl",
+        "qty": 150,
+        "held": 20,
+        "allocated": 30,
+        "reserve": 20,
+        "unit": "tấn",
+        "source": "KHO-2210 / KT-2210 / QC-008",
+        "confirmed": true,
+        "reconciliation": "BB-LOAITRUNG-DEMO-KALI",
+        "outsideOrders": [
+          "LSX-NGOAI-KALI"
+        ],
+        "checks": {
+          "inventory": {
+            "by": "Kho vận",
+            "at": "2026-10-29T15:58:17.702Z",
+            "reference": "GIẢ LẬP · Tồn, loại trừ đã loại trùng; A0 chỉ dành lệnh ngoài phạm vi · KHO-2210 / KT-2210 / QC-008",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0041\",\"material\":\"KALI\",\"qty\":220,\"source\":\"KH-2026-10-v1 / BOM-K01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[{\"forecast\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"id\":\"SHIP-90\",\"includedQty\":0,\"material\":\"KALI\",\"qty\":90,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-TM-014 · GIẢ LẬP\",\"status\":\"planned\"}],\"stock\":{\"allocated\":30,\"confirmed\":true,\"held\":20,\"id\":\"KALI\",\"name\":\"Kali · KCl\",\"outsideOrders\":[\"LSX-NGOAI-KALI\"],\"qty\":150,\"reconciliation\":\"BB-LOAITRUNG-DEMO-KALI\",\"reserve\":20,\"source\":\"KHO-2210 / KT-2210 / QC-008\",\"unit\":\"tấn\"}}"
+          },
+          "books": {
+            "by": "Kế toán",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Đối soát sổ sách · KHO-2210 / KT-2210 / QC-008",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0041\",\"material\":\"KALI\",\"qty\":220,\"source\":\"KH-2026-10-v1 / BOM-K01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[{\"forecast\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"id\":\"SHIP-90\",\"includedQty\":0,\"material\":\"KALI\",\"qty\":90,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-TM-014 · GIẢ LẬP\",\"status\":\"planned\"}],\"stock\":{\"allocated\":30,\"confirmed\":true,\"held\":20,\"id\":\"KALI\",\"name\":\"Kali · KCl\",\"outsideOrders\":[\"LSX-NGOAI-KALI\"],\"qty\":150,\"reconciliation\":\"BB-LOAITRUNG-DEMO-KALI\",\"reserve\":20,\"source\":\"KHO-2210 / KT-2210 / QC-008\",\"unit\":\"tấn\"}}"
+          },
+          "quality": {
+            "by": "QA/QC",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Chất lượng tồn đầu kỳ · KHO-2210 / KT-2210 / QC-008",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0041\",\"material\":\"KALI\",\"qty\":220,\"source\":\"KH-2026-10-v1 / BOM-K01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[{\"forecast\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"id\":\"SHIP-90\",\"includedQty\":0,\"material\":\"KALI\",\"qty\":90,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-TM-014 · GIẢ LẬP\",\"status\":\"planned\"}],\"stock\":{\"allocated\":30,\"confirmed\":true,\"held\":20,\"id\":\"KALI\",\"name\":\"Kali · KCl\",\"outsideOrders\":[\"LSX-NGOAI-KALI\"],\"qty\":150,\"reconciliation\":\"BB-LOAITRUNG-DEMO-KALI\",\"reserve\":20,\"source\":\"KHO-2210 / KT-2210 / QC-008\",\"unit\":\"tấn\"}}"
+          },
+          "plan": {
+            "by": "Phân xưởng",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Hiệu lực kế hoạch / định mức · KHO-2210 / KT-2210 / QC-008",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0041\",\"material\":\"KALI\",\"qty\":220,\"source\":\"KH-2026-10-v1 / BOM-K01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[{\"forecast\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"id\":\"SHIP-90\",\"includedQty\":0,\"material\":\"KALI\",\"qty\":90,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-TM-014 · GIẢ LẬP\",\"status\":\"planned\"}],\"stock\":{\"allocated\":30,\"confirmed\":true,\"held\":20,\"id\":\"KALI\",\"name\":\"Kali · KCl\",\"outsideOrders\":[\"LSX-NGOAI-KALI\"],\"qty\":150,\"reconciliation\":\"BB-LOAITRUNG-DEMO-KALI\",\"reserve\":20,\"source\":\"KHO-2210 / KT-2210 / QC-008\",\"unit\":\"tấn\"}}"
+          },
+          "supply": {
+            "by": "KH-TM",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Lịch và nguồn cung · KHO-2210 / KT-2210 / QC-008",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0041\",\"material\":\"KALI\",\"qty\":220,\"source\":\"KH-2026-10-v1 / BOM-K01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[{\"forecast\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"id\":\"SHIP-90\",\"includedQty\":0,\"material\":\"KALI\",\"qty\":90,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-TM-014 · GIẢ LẬP\",\"status\":\"planned\"}],\"stock\":{\"allocated\":30,\"confirmed\":true,\"held\":20,\"id\":\"KALI\",\"name\":\"Kali · KCl\",\"outsideOrders\":[\"LSX-NGOAI-KALI\"],\"qty\":150,\"reconciliation\":\"BB-LOAITRUNG-DEMO-KALI\",\"reserve\":20,\"source\":\"KHO-2210 / KT-2210 / QC-008\",\"unit\":\"tấn\"}}"
+          }
+        }
+      },
+      {
+        "id": "UREA",
+        "name": "Urê",
+        "qty": 320,
+        "held": 0,
+        "allocated": 20,
+        "reserve": 40,
+        "unit": "tấn",
+        "source": "KHO-2210 / QC-009",
+        "confirmed": true,
+        "reconciliation": "BB-LOAITRUNG-DEMO-UREA",
+        "outsideOrders": [
+          "LSX-NGOAI-UREA"
+        ],
+        "checks": {
+          "inventory": {
+            "by": "Kho vận",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Tồn, loại trừ đã loại trùng; A0 chỉ dành lệnh ngoài phạm vi · KHO-2210 / QC-009",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0042\",\"material\":\"UREA\",\"qty\":180,\"source\":\"KH-2026-10-v1 / BOM-U01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":20,\"confirmed\":true,\"held\":0,\"id\":\"UREA\",\"name\":\"Urê\",\"outsideOrders\":[\"LSX-NGOAI-UREA\"],\"qty\":320,\"reconciliation\":\"BB-LOAITRUNG-DEMO-UREA\",\"reserve\":40,\"source\":\"KHO-2210 / QC-009\",\"unit\":\"tấn\"}}"
+          },
+          "books": {
+            "by": "Kế toán",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Đối soát sổ sách · KHO-2210 / QC-009",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0042\",\"material\":\"UREA\",\"qty\":180,\"source\":\"KH-2026-10-v1 / BOM-U01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":20,\"confirmed\":true,\"held\":0,\"id\":\"UREA\",\"name\":\"Urê\",\"outsideOrders\":[\"LSX-NGOAI-UREA\"],\"qty\":320,\"reconciliation\":\"BB-LOAITRUNG-DEMO-UREA\",\"reserve\":40,\"source\":\"KHO-2210 / QC-009\",\"unit\":\"tấn\"}}"
+          },
+          "quality": {
+            "by": "QA/QC",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Chất lượng tồn đầu kỳ · KHO-2210 / QC-009",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0042\",\"material\":\"UREA\",\"qty\":180,\"source\":\"KH-2026-10-v1 / BOM-U01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":20,\"confirmed\":true,\"held\":0,\"id\":\"UREA\",\"name\":\"Urê\",\"outsideOrders\":[\"LSX-NGOAI-UREA\"],\"qty\":320,\"reconciliation\":\"BB-LOAITRUNG-DEMO-UREA\",\"reserve\":40,\"source\":\"KHO-2210 / QC-009\",\"unit\":\"tấn\"}}"
+          },
+          "plan": {
+            "by": "Phân xưởng",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Hiệu lực kế hoạch / định mức · KHO-2210 / QC-009",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0042\",\"material\":\"UREA\",\"qty\":180,\"source\":\"KH-2026-10-v1 / BOM-U01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":20,\"confirmed\":true,\"held\":0,\"id\":\"UREA\",\"name\":\"Urê\",\"outsideOrders\":[\"LSX-NGOAI-UREA\"],\"qty\":320,\"reconciliation\":\"BB-LOAITRUNG-DEMO-UREA\",\"reserve\":40,\"source\":\"KHO-2210 / QC-009\",\"unit\":\"tấn\"}}"
+          },
+          "supply": {
+            "by": "KH-TM",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Lịch và nguồn cung · KHO-2210 / QC-009",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0042\",\"material\":\"UREA\",\"qty\":180,\"source\":\"KH-2026-10-v1 / BOM-U01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":20,\"confirmed\":true,\"held\":0,\"id\":\"UREA\",\"name\":\"Urê\",\"outsideOrders\":[\"LSX-NGOAI-UREA\"],\"qty\":320,\"reconciliation\":\"BB-LOAITRUNG-DEMO-UREA\",\"reserve\":40,\"source\":\"KHO-2210 / QC-009\",\"unit\":\"tấn\"}}"
+          }
+        }
+      },
+      {
+        "id": "DAP",
+        "name": "DAP",
+        "qty": 85,
+        "held": 5,
+        "allocated": 10,
+        "reserve": 15,
+        "unit": "tấn",
+        "source": "KHO-2210 / QC-010",
+        "confirmed": true,
+        "reconciliation": "BB-LOAITRUNG-DEMO-DAP",
+        "outsideOrders": [
+          "LSX-NGOAI-DAP"
+        ],
+        "checks": {
+          "inventory": {
+            "by": "Kho vận",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Tồn, loại trừ đã loại trùng; A0 chỉ dành lệnh ngoài phạm vi · KHO-2210 / QC-010",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0043\",\"material\":\"DAP\",\"qty\":60,\"source\":\"KH-2026-10-v1 / BOM-D01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":10,\"confirmed\":true,\"held\":5,\"id\":\"DAP\",\"name\":\"DAP\",\"outsideOrders\":[\"LSX-NGOAI-DAP\"],\"qty\":85,\"reconciliation\":\"BB-LOAITRUNG-DEMO-DAP\",\"reserve\":15,\"source\":\"KHO-2210 / QC-010\",\"unit\":\"tấn\"}}"
+          },
+          "books": {
+            "by": "Kế toán",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Đối soát sổ sách · KHO-2210 / QC-010",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0043\",\"material\":\"DAP\",\"qty\":60,\"source\":\"KH-2026-10-v1 / BOM-D01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":10,\"confirmed\":true,\"held\":5,\"id\":\"DAP\",\"name\":\"DAP\",\"outsideOrders\":[\"LSX-NGOAI-DAP\"],\"qty\":85,\"reconciliation\":\"BB-LOAITRUNG-DEMO-DAP\",\"reserve\":15,\"source\":\"KHO-2210 / QC-010\",\"unit\":\"tấn\"}}"
+          },
+          "quality": {
+            "by": "QA/QC",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Chất lượng tồn đầu kỳ · KHO-2210 / QC-010",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0043\",\"material\":\"DAP\",\"qty\":60,\"source\":\"KH-2026-10-v1 / BOM-D01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":10,\"confirmed\":true,\"held\":5,\"id\":\"DAP\",\"name\":\"DAP\",\"outsideOrders\":[\"LSX-NGOAI-DAP\"],\"qty\":85,\"reconciliation\":\"BB-LOAITRUNG-DEMO-DAP\",\"reserve\":15,\"source\":\"KHO-2210 / QC-010\",\"unit\":\"tấn\"}}"
+          },
+          "plan": {
+            "by": "Phân xưởng",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Hiệu lực kế hoạch / định mức · KHO-2210 / QC-010",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0043\",\"material\":\"DAP\",\"qty\":60,\"source\":\"KH-2026-10-v1 / BOM-D01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":10,\"confirmed\":true,\"held\":5,\"id\":\"DAP\",\"name\":\"DAP\",\"outsideOrders\":[\"LSX-NGOAI-DAP\"],\"qty\":85,\"reconciliation\":\"BB-LOAITRUNG-DEMO-DAP\",\"reserve\":15,\"source\":\"KHO-2210 / QC-010\",\"unit\":\"tấn\"}}"
+          },
+          "supply": {
+            "by": "KH-TM",
+            "at": "2026-10-29T15:58:17.704Z",
+            "reference": "GIẢ LẬP · Lịch và nguồn cung · KHO-2210 / QC-010",
+            "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0043\",\"material\":\"DAP\",\"qty\":60,\"source\":\"KH-2026-10-v1 / BOM-D01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":10,\"confirmed\":true,\"held\":5,\"id\":\"DAP\",\"name\":\"DAP\",\"outsideOrders\":[\"LSX-NGOAI-DAP\"],\"qty\":85,\"reconciliation\":\"BB-LOAITRUNG-DEMO-DAP\",\"reserve\":15,\"source\":\"KHO-2210 / QC-010\",\"unit\":\"tấn\"}}"
+          }
+        }
+      }
+    ],
+    "needs": [
+      {
+        "id": "LSX-0041",
+        "material": "KALI",
+        "qty": 220,
+        "at": "2026-10-24T07:00",
+        "source": "KH-2026-10-v1 / BOM-K01"
+      },
+      {
+        "id": "LSX-0042",
+        "material": "UREA",
+        "qty": 180,
+        "at": "2026-10-24T07:00",
+        "source": "KH-2026-10-v1 / BOM-U01"
+      },
+      {
+        "id": "LSX-0043",
+        "material": "DAP",
+        "qty": 60,
+        "at": "2026-10-24T07:00",
+        "source": "KH-2026-10-v1 / BOM-D01"
+      }
+    ],
+    "shipments": [
+      {
+        "id": "SHIP-90",
+        "material": "KALI",
+        "qty": 90,
+        "readyAt": "2026-10-26T06:00",
+        "status": "planned",
+        "source": "KH-TM-014 · GIẢ LẬP",
+        "includedQty": 0,
+        "forecast": {
+          "eta": "2026-10-25T20:00",
+          "unloaded": "2026-10-25T23:00",
+          "received": "2026-10-26T02:00",
+          "quality": "2026-10-26T06:00"
+        }
+      }
+    ]
+  },
+  "case": {
+    "id": "EX-0041",
+    "version": 1,
+    "material": "KALI",
+    "name": "Kali · KCl",
+    "status": "closed",
+    "scope": "2026-10",
+    "needIds": [
+      "LSX-0041"
+    ],
+    "eventKey": "KALI|2026-10",
+    "balance": {
+      "material": "KALI",
+      "name": "Kali · KCl",
+      "at": "2026-10-24T07:00",
+      "available": 100,
+      "incoming": 0,
+      "demand": 220,
+      "reserve": 20,
+      "firm": -120,
+      "planned": -120,
+      "level": 2,
+      "sources": [
+        "KHO-2210 / KT-2210 / QC-008",
+        "KH-2026-10-v1 / BOM-K01"
+      ]
+    },
+    "snapshot": {
+      "cutoff": "2026-10-22T08:00",
+      "planVersion": "KH-2026-10-v1",
+      "stocks": [
+        {
+          "id": "KALI",
+          "name": "Kali · KCl",
+          "qty": 150,
+          "held": 20,
+          "allocated": 30,
+          "reserve": 20,
+          "unit": "tấn",
+          "source": "KHO-2210 / KT-2210 / QC-008",
+          "confirmed": true,
+          "reconciliation": "BB-LOAITRUNG-DEMO-KALI",
+          "outsideOrders": [
+            "LSX-NGOAI-KALI"
+          ],
+          "checks": {
+            "inventory": {
+              "by": "Kho vận",
+              "at": "2026-10-29T15:58:17.702Z",
+              "reference": "GIẢ LẬP · Tồn, loại trừ đã loại trùng; A0 chỉ dành lệnh ngoài phạm vi · KHO-2210 / KT-2210 / QC-008",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0041\",\"material\":\"KALI\",\"qty\":220,\"source\":\"KH-2026-10-v1 / BOM-K01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[{\"forecast\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"id\":\"SHIP-90\",\"includedQty\":0,\"material\":\"KALI\",\"qty\":90,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-TM-014 · GIẢ LẬP\",\"status\":\"planned\"}],\"stock\":{\"allocated\":30,\"confirmed\":true,\"held\":20,\"id\":\"KALI\",\"name\":\"Kali · KCl\",\"outsideOrders\":[\"LSX-NGOAI-KALI\"],\"qty\":150,\"reconciliation\":\"BB-LOAITRUNG-DEMO-KALI\",\"reserve\":20,\"source\":\"KHO-2210 / KT-2210 / QC-008\",\"unit\":\"tấn\"}}"
+            },
+            "books": {
+              "by": "Kế toán",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Đối soát sổ sách · KHO-2210 / KT-2210 / QC-008",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0041\",\"material\":\"KALI\",\"qty\":220,\"source\":\"KH-2026-10-v1 / BOM-K01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[{\"forecast\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"id\":\"SHIP-90\",\"includedQty\":0,\"material\":\"KALI\",\"qty\":90,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-TM-014 · GIẢ LẬP\",\"status\":\"planned\"}],\"stock\":{\"allocated\":30,\"confirmed\":true,\"held\":20,\"id\":\"KALI\",\"name\":\"Kali · KCl\",\"outsideOrders\":[\"LSX-NGOAI-KALI\"],\"qty\":150,\"reconciliation\":\"BB-LOAITRUNG-DEMO-KALI\",\"reserve\":20,\"source\":\"KHO-2210 / KT-2210 / QC-008\",\"unit\":\"tấn\"}}"
+            },
+            "quality": {
+              "by": "QA/QC",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Chất lượng tồn đầu kỳ · KHO-2210 / KT-2210 / QC-008",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0041\",\"material\":\"KALI\",\"qty\":220,\"source\":\"KH-2026-10-v1 / BOM-K01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[{\"forecast\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"id\":\"SHIP-90\",\"includedQty\":0,\"material\":\"KALI\",\"qty\":90,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-TM-014 · GIẢ LẬP\",\"status\":\"planned\"}],\"stock\":{\"allocated\":30,\"confirmed\":true,\"held\":20,\"id\":\"KALI\",\"name\":\"Kali · KCl\",\"outsideOrders\":[\"LSX-NGOAI-KALI\"],\"qty\":150,\"reconciliation\":\"BB-LOAITRUNG-DEMO-KALI\",\"reserve\":20,\"source\":\"KHO-2210 / KT-2210 / QC-008\",\"unit\":\"tấn\"}}"
+            },
+            "plan": {
+              "by": "Phân xưởng",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Hiệu lực kế hoạch / định mức · KHO-2210 / KT-2210 / QC-008",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0041\",\"material\":\"KALI\",\"qty\":220,\"source\":\"KH-2026-10-v1 / BOM-K01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[{\"forecast\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"id\":\"SHIP-90\",\"includedQty\":0,\"material\":\"KALI\",\"qty\":90,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-TM-014 · GIẢ LẬP\",\"status\":\"planned\"}],\"stock\":{\"allocated\":30,\"confirmed\":true,\"held\":20,\"id\":\"KALI\",\"name\":\"Kali · KCl\",\"outsideOrders\":[\"LSX-NGOAI-KALI\"],\"qty\":150,\"reconciliation\":\"BB-LOAITRUNG-DEMO-KALI\",\"reserve\":20,\"source\":\"KHO-2210 / KT-2210 / QC-008\",\"unit\":\"tấn\"}}"
+            },
+            "supply": {
+              "by": "KH-TM",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Lịch và nguồn cung · KHO-2210 / KT-2210 / QC-008",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0041\",\"material\":\"KALI\",\"qty\":220,\"source\":\"KH-2026-10-v1 / BOM-K01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[{\"forecast\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"id\":\"SHIP-90\",\"includedQty\":0,\"material\":\"KALI\",\"qty\":90,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-TM-014 · GIẢ LẬP\",\"status\":\"planned\"}],\"stock\":{\"allocated\":30,\"confirmed\":true,\"held\":20,\"id\":\"KALI\",\"name\":\"Kali · KCl\",\"outsideOrders\":[\"LSX-NGOAI-KALI\"],\"qty\":150,\"reconciliation\":\"BB-LOAITRUNG-DEMO-KALI\",\"reserve\":20,\"source\":\"KHO-2210 / KT-2210 / QC-008\",\"unit\":\"tấn\"}}"
+            }
+          }
+        },
+        {
+          "id": "UREA",
+          "name": "Urê",
+          "qty": 320,
+          "held": 0,
+          "allocated": 20,
+          "reserve": 40,
+          "unit": "tấn",
+          "source": "KHO-2210 / QC-009",
+          "confirmed": true,
+          "reconciliation": "BB-LOAITRUNG-DEMO-UREA",
+          "outsideOrders": [
+            "LSX-NGOAI-UREA"
+          ],
+          "checks": {
+            "inventory": {
+              "by": "Kho vận",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Tồn, loại trừ đã loại trùng; A0 chỉ dành lệnh ngoài phạm vi · KHO-2210 / QC-009",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0042\",\"material\":\"UREA\",\"qty\":180,\"source\":\"KH-2026-10-v1 / BOM-U01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":20,\"confirmed\":true,\"held\":0,\"id\":\"UREA\",\"name\":\"Urê\",\"outsideOrders\":[\"LSX-NGOAI-UREA\"],\"qty\":320,\"reconciliation\":\"BB-LOAITRUNG-DEMO-UREA\",\"reserve\":40,\"source\":\"KHO-2210 / QC-009\",\"unit\":\"tấn\"}}"
+            },
+            "books": {
+              "by": "Kế toán",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Đối soát sổ sách · KHO-2210 / QC-009",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0042\",\"material\":\"UREA\",\"qty\":180,\"source\":\"KH-2026-10-v1 / BOM-U01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":20,\"confirmed\":true,\"held\":0,\"id\":\"UREA\",\"name\":\"Urê\",\"outsideOrders\":[\"LSX-NGOAI-UREA\"],\"qty\":320,\"reconciliation\":\"BB-LOAITRUNG-DEMO-UREA\",\"reserve\":40,\"source\":\"KHO-2210 / QC-009\",\"unit\":\"tấn\"}}"
+            },
+            "quality": {
+              "by": "QA/QC",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Chất lượng tồn đầu kỳ · KHO-2210 / QC-009",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0042\",\"material\":\"UREA\",\"qty\":180,\"source\":\"KH-2026-10-v1 / BOM-U01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":20,\"confirmed\":true,\"held\":0,\"id\":\"UREA\",\"name\":\"Urê\",\"outsideOrders\":[\"LSX-NGOAI-UREA\"],\"qty\":320,\"reconciliation\":\"BB-LOAITRUNG-DEMO-UREA\",\"reserve\":40,\"source\":\"KHO-2210 / QC-009\",\"unit\":\"tấn\"}}"
+            },
+            "plan": {
+              "by": "Phân xưởng",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Hiệu lực kế hoạch / định mức · KHO-2210 / QC-009",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0042\",\"material\":\"UREA\",\"qty\":180,\"source\":\"KH-2026-10-v1 / BOM-U01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":20,\"confirmed\":true,\"held\":0,\"id\":\"UREA\",\"name\":\"Urê\",\"outsideOrders\":[\"LSX-NGOAI-UREA\"],\"qty\":320,\"reconciliation\":\"BB-LOAITRUNG-DEMO-UREA\",\"reserve\":40,\"source\":\"KHO-2210 / QC-009\",\"unit\":\"tấn\"}}"
+            },
+            "supply": {
+              "by": "KH-TM",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Lịch và nguồn cung · KHO-2210 / QC-009",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0042\",\"material\":\"UREA\",\"qty\":180,\"source\":\"KH-2026-10-v1 / BOM-U01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":20,\"confirmed\":true,\"held\":0,\"id\":\"UREA\",\"name\":\"Urê\",\"outsideOrders\":[\"LSX-NGOAI-UREA\"],\"qty\":320,\"reconciliation\":\"BB-LOAITRUNG-DEMO-UREA\",\"reserve\":40,\"source\":\"KHO-2210 / QC-009\",\"unit\":\"tấn\"}}"
+            }
+          }
+        },
+        {
+          "id": "DAP",
+          "name": "DAP",
+          "qty": 85,
+          "held": 5,
+          "allocated": 10,
+          "reserve": 15,
+          "unit": "tấn",
+          "source": "KHO-2210 / QC-010",
+          "confirmed": true,
+          "reconciliation": "BB-LOAITRUNG-DEMO-DAP",
+          "outsideOrders": [
+            "LSX-NGOAI-DAP"
+          ],
+          "checks": {
+            "inventory": {
+              "by": "Kho vận",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Tồn, loại trừ đã loại trùng; A0 chỉ dành lệnh ngoài phạm vi · KHO-2210 / QC-010",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0043\",\"material\":\"DAP\",\"qty\":60,\"source\":\"KH-2026-10-v1 / BOM-D01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":10,\"confirmed\":true,\"held\":5,\"id\":\"DAP\",\"name\":\"DAP\",\"outsideOrders\":[\"LSX-NGOAI-DAP\"],\"qty\":85,\"reconciliation\":\"BB-LOAITRUNG-DEMO-DAP\",\"reserve\":15,\"source\":\"KHO-2210 / QC-010\",\"unit\":\"tấn\"}}"
+            },
+            "books": {
+              "by": "Kế toán",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Đối soát sổ sách · KHO-2210 / QC-010",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0043\",\"material\":\"DAP\",\"qty\":60,\"source\":\"KH-2026-10-v1 / BOM-D01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":10,\"confirmed\":true,\"held\":5,\"id\":\"DAP\",\"name\":\"DAP\",\"outsideOrders\":[\"LSX-NGOAI-DAP\"],\"qty\":85,\"reconciliation\":\"BB-LOAITRUNG-DEMO-DAP\",\"reserve\":15,\"source\":\"KHO-2210 / QC-010\",\"unit\":\"tấn\"}}"
+            },
+            "quality": {
+              "by": "QA/QC",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Chất lượng tồn đầu kỳ · KHO-2210 / QC-010",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0043\",\"material\":\"DAP\",\"qty\":60,\"source\":\"KH-2026-10-v1 / BOM-D01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":10,\"confirmed\":true,\"held\":5,\"id\":\"DAP\",\"name\":\"DAP\",\"outsideOrders\":[\"LSX-NGOAI-DAP\"],\"qty\":85,\"reconciliation\":\"BB-LOAITRUNG-DEMO-DAP\",\"reserve\":15,\"source\":\"KHO-2210 / QC-010\",\"unit\":\"tấn\"}}"
+            },
+            "plan": {
+              "by": "Phân xưởng",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Hiệu lực kế hoạch / định mức · KHO-2210 / QC-010",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0043\",\"material\":\"DAP\",\"qty\":60,\"source\":\"KH-2026-10-v1 / BOM-D01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":10,\"confirmed\":true,\"held\":5,\"id\":\"DAP\",\"name\":\"DAP\",\"outsideOrders\":[\"LSX-NGOAI-DAP\"],\"qty\":85,\"reconciliation\":\"BB-LOAITRUNG-DEMO-DAP\",\"reserve\":15,\"source\":\"KHO-2210 / QC-010\",\"unit\":\"tấn\"}}"
+            },
+            "supply": {
+              "by": "KH-TM",
+              "at": "2026-10-29T15:58:17.704Z",
+              "reference": "GIẢ LẬP · Lịch và nguồn cung · KHO-2210 / QC-010",
+              "signature": "{\"cutoff\":\"2026-10-22T08:00\",\"needs\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"LSX-0043\",\"material\":\"DAP\",\"qty\":60,\"source\":\"KH-2026-10-v1 / BOM-D01\"}],\"planVersion\":\"KH-2026-10-v1\",\"shipments\":[],\"stock\":{\"allocated\":10,\"confirmed\":true,\"held\":5,\"id\":\"DAP\",\"name\":\"DAP\",\"outsideOrders\":[\"LSX-NGOAI-DAP\"],\"qty\":85,\"reconciliation\":\"BB-LOAITRUNG-DEMO-DAP\",\"reserve\":15,\"source\":\"KHO-2210 / QC-010\",\"unit\":\"tấn\"}}"
+            }
+          }
+        }
+      ],
+      "needs": [
+        {
+          "id": "LSX-0041",
+          "material": "KALI",
+          "qty": 220,
+          "at": "2026-10-24T07:00",
+          "source": "KH-2026-10-v1 / BOM-K01"
+        },
+        {
+          "id": "LSX-0042",
+          "material": "UREA",
+          "qty": 180,
+          "at": "2026-10-24T07:00",
+          "source": "KH-2026-10-v1 / BOM-U01"
+        },
+        {
+          "id": "LSX-0043",
+          "material": "DAP",
+          "qty": 60,
+          "at": "2026-10-24T07:00",
+          "source": "KH-2026-10-v1 / BOM-D01"
+        }
+      ],
+      "shipments": [
+        {
+          "id": "SHIP-90",
+          "material": "KALI",
+          "qty": 90,
+          "readyAt": "2026-10-26T06:00",
+          "status": "planned",
+          "source": "KH-TM-014 · GIẢ LẬP",
+          "includedQty": 0,
+          "forecast": {
+            "eta": "2026-10-25T20:00",
+            "unloaded": "2026-10-25T23:00",
+            "received": "2026-10-26T02:00",
+            "quality": "2026-10-26T06:00"
+          }
+        }
+      ]
+    },
+    "snapshotVersion": 1,
+    "createdAt": "2026-10-29T15:58:17.988Z",
+    "due": "2026-10-24T07:00",
+    "claims": [
+      {
+        "id": "C1",
+        "text": "Tồn dùng được 100 tấn; nhu cầu lũy kế 220 tấn. Số dư chắc chắn -120 tấn.",
+        "sources": [
+          "KHO-2210 / KT-2210 / QC-008",
+          "KH-2026-10-v1 / BOM-K01"
+        ],
+        "status": "accepted"
+      },
+      {
+        "id": "C2",
+        "text": "Số dư kế hoạch -120 tấn. Nguồn dự kiến chưa phải nguồn thực tế; chuyến trễ/chưa rõ lịch không cộng trước hạn.",
+        "sources": [
+          "KH-TM-014 · GIẢ LẬP"
+        ],
+        "status": "accepted"
+      },
+      {
+        "id": "C3",
+        "text": "Phương án B tách 2 đợt đáp ứng 170 tấn; chuyển 50 tấn sang KH-KYSAU-DEMO. Các đợt phụ thuộc nguồn phải xác minh thực tế trước thực hiện.",
+        "sources": [
+          "KH-2026-10-v1",
+          "KH-DIEUCHINH-DEMO-01"
+        ],
+        "status": "accepted"
+      }
+    ],
+    "narrativeMode": "template",
+    "proposal": {
+      "option": "B",
+      "qty": 0,
+      "demand": 170,
+      "readyAt": "2026-10-26T06:00",
+      "source": "KH-DIEUCHINH-DEMO-01",
+      "note": "GIẢ LẬP · tách đợt; đợt sau phụ thuộc nguồn thực tế.",
+      "confirmed": true,
+      "stages": [
+        {
+          "id": "DOT-1",
+          "at": "2026-10-24T07:00",
+          "qty": 80,
+          "sources": [
+            "OPENING"
+          ]
+        },
+        {
+          "id": "DOT-2",
+          "at": "2026-10-26T06:00",
+          "qty": 90,
+          "sources": [
+            "SHIP-90"
+          ]
+        }
+      ],
+      "carry": {
+        "qty": 50,
+        "planId": "KH-KYSAU-DEMO",
+        "owner": "Phân xưởng · demo",
+        "approval": "PD-CHUYENKY-DEMO"
+      },
+      "checks": {
+        "workshop": {
+          "by": "Phân xưởng",
+          "at": "2026-10-29T15:58:32.874Z",
+          "reference": "KH-DIEUCHINH-DEMO-01",
+          "signature": "{\"proposal\":{\"carry\":{\"approval\":\"PD-CHUYENKY-DEMO\",\"owner\":\"Phân xưởng · demo\",\"planId\":\"KH-KYSAU-DEMO\",\"qty\":50},\"demand\":170,\"note\":\"GIẢ LẬP · tách đợt; đợt sau phụ thuộc nguồn thực tế.\",\"option\":\"B\",\"qty\":0,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-DIEUCHINH-DEMO-01\",\"stages\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"DOT-1\",\"qty\":80,\"sources\":[\"OPENING\"]},{\"at\":\"2026-10-26T06:00\",\"id\":\"DOT-2\",\"qty\":90,\"sources\":[\"SHIP-90\"]}],\"version\":1},\"version\":1}"
+        },
+        "supply": {
+          "by": "KH-TM",
+          "at": "2026-10-29T15:58:33.187Z",
+          "reference": "KH-DIEUCHINH-DEMO-01",
+          "signature": "{\"proposal\":{\"carry\":{\"approval\":\"PD-CHUYENKY-DEMO\",\"owner\":\"Phân xưởng · demo\",\"planId\":\"KH-KYSAU-DEMO\",\"qty\":50},\"demand\":170,\"note\":\"GIẢ LẬP · tách đợt; đợt sau phụ thuộc nguồn thực tế.\",\"option\":\"B\",\"qty\":0,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-DIEUCHINH-DEMO-01\",\"stages\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"DOT-1\",\"qty\":80,\"sources\":[\"OPENING\"]},{\"at\":\"2026-10-26T06:00\",\"id\":\"DOT-2\",\"qty\":90,\"sources\":[\"SHIP-90\"]}],\"version\":1},\"version\":1}"
+        }
+      },
+      "version": 1
+    },
+    "evidence": [
+      {
+        "id": "ce52da7d-e1a7-40c0-a181-ddb9a3d39982",
+        "kind": "inventory",
+        "reference": "KHO-2210 / KT-2210 · GIẢ LẬP",
+        "by": "Kho vận",
+        "at": "2026-10-29T15:58:26.625Z",
+        "version": 1
+      },
+      {
+        "id": "9fc3c80b-6730-4fc1-9479-a5eb7b66941f",
+        "kind": "quality",
+        "reference": "QC-008 · GIẢ LẬP",
+        "by": "Kho vận",
+        "at": "2026-10-29T15:58:26.651Z",
+        "version": 1
+      },
+      {
+        "id": "0fa713e9-f3a8-4b22-aea2-c72376fbc4dc",
+        "kind": "plan",
+        "reference": "KH-2026-10-v1 / BOM-K01 · kế hoạch BAN ĐẦU · GIẢ LẬP",
+        "by": "Kho vận",
+        "at": "2026-10-29T15:58:26.680Z",
+        "version": 1
+      },
+      {
+        "id": "089cf57d-6a55-4036-8c0b-595ea2d6acd8",
+        "kind": "revised_plan",
+        "reference": "KH-DIEUCHINH-DEMO-01",
+        "by": "Phân xưởng",
+        "at": "2026-10-29T15:58:47.524Z",
+        "version": 1,
+        "executionId": "KH-DIEUCHINH-DEMO-01"
+      },
+      {
+        "id": "53bc5f64-779c-432f-8a63-2d8ccafa0789",
+        "kind": "execution",
+        "reference": "TH-DOT-1-GIẢ-LẬP",
+        "by": "Phân xưởng",
+        "at": "2026-10-29T15:58:47.875Z",
+        "version": 1,
+        "executionId": "DOT-1"
+      },
+      {
+        "id": "6e04c0d4-d63d-41be-8bfc-8749361cfb8a",
+        "kind": "execution",
+        "reference": "TH-DOT-2-GIẢ-LẬP",
+        "by": "Phân xưởng",
+        "at": "2026-10-29T15:58:48.531Z",
+        "version": 1,
+        "executionId": "DOT-2"
+      },
+      {
+        "id": "119ed5d4-bff7-4fcb-ae57-85fe03bb45e0",
+        "kind": "carry_plan",
+        "reference": "PD-CHUYENKY-DEMO",
+        "by": "Phân xưởng",
+        "at": "2026-10-29T15:59:00.330Z",
+        "version": 1,
+        "executionId": "KH-KYSAU-DEMO"
+      }
+    ],
+    "execution": {
+      "qty": 0,
+      "at": "",
+      "quality": false,
+      "planExecuted": false,
+      "note": "",
+      "stages": [
+        {
+          "id": "DOT-1",
+          "qty": 80,
+          "at": "2026-10-24T07:00",
+          "reference": "TH-DOT-1-GIẢ-LẬP",
+          "confirmation": {
+            "by": "Phân xưởng",
+            "at": "2026-10-29T15:58:48.162Z",
+            "reference": "TH-DOT-1-GIẢ-LẬP",
+            "signature": "{\"at\":\"2026-10-24T07:00\",\"id\":\"DOT-1\",\"qty\":80,\"reference\":\"TH-DOT-1-GIẢ-LẬP\",\"sources\":[],\"version\":1}"
+          }
+        },
+        {
+          "id": "DOT-2",
+          "qty": 90,
+          "at": "2026-10-26T06:00",
+          "reference": "TH-DOT-2-GIẢ-LẬP",
+          "confirmation": {
+            "by": "Phân xưởng",
+            "at": "2026-10-29T15:58:55.196Z",
+            "reference": "TH-DOT-2-GIẢ-LẬP",
+            "signature": "{\"at\":\"2026-10-26T06:00\",\"id\":\"DOT-2\",\"qty\":90,\"reference\":\"TH-DOT-2-GIẢ-LẬP\",\"sources\":[{\"checks\":{\"ops\":{\"at\":\"2026-10-29T15:58:54.251Z\",\"by\":\"Kho vận\",\"reference\":\"PN-SHIP-90-GIẢ-LẬP\",\"signature\":\"{\\\"id\\\":\\\"SHIP-90\\\",\\\"milestones\\\":{\\\"eta\\\":\\\"2026-10-25T20:00\\\",\\\"quality\\\":\\\"2026-10-26T06:00\\\",\\\"received\\\":\\\"2026-10-26T02:00\\\",\\\"unloaded\\\":\\\"2026-10-25T23:00\\\"},\\\"qty\\\":90,\\\"reference\\\":\\\"PN-SHIP-90-GIẢ-LẬP\\\"}\"},\"qa\":{\"at\":\"2026-10-29T15:58:54.556Z\",\"by\":\"QA/QC\",\"reference\":\"PN-SHIP-90-GIẢ-LẬP\",\"signature\":\"{\\\"id\\\":\\\"SHIP-90\\\",\\\"milestones\\\":{\\\"eta\\\":\\\"2026-10-25T20:00\\\",\\\"quality\\\":\\\"2026-10-26T06:00\\\",\\\"received\\\":\\\"2026-10-26T02:00\\\",\\\"unloaded\\\":\\\"2026-10-25T23:00\\\"},\\\"qty\\\":90,\\\"reference\\\":\\\"PN-SHIP-90-GIẢ-LẬP\\\"}\"},\"supply\":{\"at\":\"2026-10-29T15:58:54.872Z\",\"by\":\"KH-TM\",\"reference\":\"PN-SHIP-90-GIẢ-LẬP\",\"signature\":\"{\\\"id\\\":\\\"SHIP-90\\\",\\\"milestones\\\":{\\\"eta\\\":\\\"2026-10-25T20:00\\\",\\\"quality\\\":\\\"2026-10-26T06:00\\\",\\\"received\\\":\\\"2026-10-26T02:00\\\",\\\"unloaded\\\":\\\"2026-10-25T23:00\\\"},\\\"qty\\\":90,\\\"reference\\\":\\\"PN-SHIP-90-GIẢ-LẬP\\\"}\"}},\"id\":\"SHIP-90\",\"milestones\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"qty\":90,\"reference\":\"PN-SHIP-90-GIẢ-LẬP\"}],\"version\":1}"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "id": "SHIP-90",
+          "qty": 90,
+          "reference": "PN-SHIP-90-GIẢ-LẬP",
+          "milestones": {
+            "eta": "2026-10-25T20:00",
+            "unloaded": "2026-10-25T23:00",
+            "received": "2026-10-26T02:00",
+            "quality": "2026-10-26T06:00"
+          },
+          "checks": {
+            "ops": {
+              "by": "Kho vận",
+              "at": "2026-10-29T15:58:54.251Z",
+              "reference": "PN-SHIP-90-GIẢ-LẬP",
+              "signature": "{\"id\":\"SHIP-90\",\"milestones\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"qty\":90,\"reference\":\"PN-SHIP-90-GIẢ-LẬP\"}"
+            },
+            "qa": {
+              "by": "QA/QC",
+              "at": "2026-10-29T15:58:54.556Z",
+              "reference": "PN-SHIP-90-GIẢ-LẬP",
+              "signature": "{\"id\":\"SHIP-90\",\"milestones\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"qty\":90,\"reference\":\"PN-SHIP-90-GIẢ-LẬP\"}"
+            },
+            "supply": {
+              "by": "KH-TM",
+              "at": "2026-10-29T15:58:54.872Z",
+              "reference": "PN-SHIP-90-GIẢ-LẬP",
+              "signature": "{\"id\":\"SHIP-90\",\"milestones\":{\"eta\":\"2026-10-25T20:00\",\"quality\":\"2026-10-26T06:00\",\"received\":\"2026-10-26T02:00\",\"unloaded\":\"2026-10-25T23:00\"},\"qty\":90,\"reference\":\"PN-SHIP-90-GIẢ-LẬP\"}"
+            }
+          }
+        }
+      ],
+      "carryConfirmed": {
+        "by": "Giám đốc Nhà máy",
+        "at": "2026-10-29T15:59:00.737Z",
+        "reference": "PD-CHUYENKY-DEMO",
+        "signature": "{\"carry\":{\"approval\":\"PD-CHUYENKY-DEMO\",\"owner\":\"Phân xưởng · demo\",\"planId\":\"KH-KYSAU-DEMO\",\"qty\":50},\"version\":1}"
+      }
+    },
+    "ai": {
+      "at": "2026-10-29T15:58:26.935Z",
+      "version": 1,
+      "promptVersion": "gsync-locked-v2",
+      "requestedModel": "gemini-2.5-flash",
+      "model": null,
+      "usage": null,
+      "status": "not-configured",
+      "error": null
+    },
+    "aiCalls": [
+      {
+        "at": "2026-10-29T15:58:26.935Z",
+        "version": 1,
+        "promptVersion": "gsync-locked-v2",
+        "requestedModel": "gemini-2.5-flash",
+        "model": null,
+        "usage": null,
+        "status": "not-configured",
+        "error": null
+      }
+    ],
+    "reviewLog": [
+      {
+        "at": "2026-10-29T15:58:31.977Z",
+        "by": "Kho vận",
+        "version": 1,
+        "claimId": "C1",
+        "before": "Tồn dùng được 100 tấn; nhu cầu lũy kế 220 tấn. Số dư chắc chắn -120 tấn.",
+        "after": "Tồn dùng được 100 tấn; nhu cầu lũy kế 220 tấn. Số dư chắc chắn -120 tấn.",
+        "status": "accepted",
+        "reason": "Đã đối chiếu",
+        "errorCode": null
+      },
+      {
+        "at": "2026-10-29T15:58:32.264Z",
+        "by": "Kho vận",
+        "version": 1,
+        "claimId": "C2",
+        "before": "Số dư kế hoạch -120 tấn. Nguồn dự kiến chưa phải nguồn thực tế; chuyến trễ/chưa rõ lịch không cộng trước hạn.",
+        "after": "Số dư kế hoạch -120 tấn. Nguồn dự kiến chưa phải nguồn thực tế; chuyến trễ/chưa rõ lịch không cộng trước hạn.",
+        "status": "accepted",
+        "reason": "Đã đối chiếu",
+        "errorCode": null
+      },
+      {
+        "at": "2026-10-29T15:58:32.557Z",
+        "by": "Kho vận",
+        "version": 1,
+        "claimId": "C3",
+        "before": "Phương án B tách 2 đợt đáp ứng 170 tấn; chuyển 50 tấn sang KH-KYSAU-DEMO. Các đợt phụ thuộc nguồn phải xác minh thực tế trước thực hiện.",
+        "after": "Phương án B tách 2 đợt đáp ứng 170 tấn; chuyển 50 tấn sang KH-KYSAU-DEMO. Các đợt phụ thuộc nguồn phải xác minh thực tế trước thực hiện.",
+        "status": "accepted",
+        "reason": "Đã đối chiếu",
+        "errorCode": null
+      }
+    ],
+    "proposalChecked": true,
+    "submittedAt": "2026-10-29T15:58:33.795Z",
+    "submission": {
+      "version": 1,
+      "at": "2026-10-29T15:58:33.795Z",
+      "checklist": {
+        "data": true,
+        "evidence": true,
+        "claims": true,
+        "proposal": true
+      },
+      "evidenceIds": [
+        "ce52da7d-e1a7-40c0-a181-ddb9a3d39982",
+        "9fc3c80b-6730-4fc1-9479-a5eb7b66941f",
+        "0fa713e9-f3a8-4b22-aea2-c72376fbc4dc"
+      ]
+    },
+    "submissions": [
+      {
+        "version": 1,
+        "at": "2026-10-29T15:58:33.795Z",
+        "checklist": {
+          "data": true,
+          "evidence": true,
+          "claims": true,
+          "proposal": true
+        },
+        "evidenceIds": [
+          "ce52da7d-e1a7-40c0-a181-ddb9a3d39982",
+          "9fc3c80b-6730-4fc1-9479-a5eb7b66941f",
+          "0fa713e9-f3a8-4b22-aea2-c72376fbc4dc"
+        ]
+      }
+    ],
+    "approvedAt": "2026-10-29T15:58:34.443Z",
+    "approvedVersion": 1,
+    "decisions": [
+      {
+        "version": 1,
+        "at": "2026-10-29T15:58:34.443Z",
+        "by": "Tổng Giám đốc SFG",
+        "proposal": {
+          "option": "B",
+          "qty": 0,
+          "demand": 170,
+          "readyAt": "2026-10-26T06:00",
+          "source": "KH-DIEUCHINH-DEMO-01",
+          "note": "GIẢ LẬP · tách đợt; đợt sau phụ thuộc nguồn thực tế.",
+          "confirmed": true,
+          "stages": [
+            {
+              "id": "DOT-1",
+              "at": "2026-10-24T07:00",
+              "qty": 80,
+              "sources": [
+                "OPENING"
+              ]
+            },
+            {
+              "id": "DOT-2",
+              "at": "2026-10-26T06:00",
+              "qty": 90,
+              "sources": [
+                "SHIP-90"
+              ]
+            }
+          ],
+          "carry": {
+            "qty": 50,
+            "planId": "KH-KYSAU-DEMO",
+            "owner": "Phân xưởng · demo",
+            "approval": "PD-CHUYENKY-DEMO"
+          },
+          "checks": {
+            "workshop": {
+              "by": "Phân xưởng",
+              "at": "2026-10-29T15:58:32.874Z",
+              "reference": "KH-DIEUCHINH-DEMO-01",
+              "signature": "{\"proposal\":{\"carry\":{\"approval\":\"PD-CHUYENKY-DEMO\",\"owner\":\"Phân xưởng · demo\",\"planId\":\"KH-KYSAU-DEMO\",\"qty\":50},\"demand\":170,\"note\":\"GIẢ LẬP · tách đợt; đợt sau phụ thuộc nguồn thực tế.\",\"option\":\"B\",\"qty\":0,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-DIEUCHINH-DEMO-01\",\"stages\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"DOT-1\",\"qty\":80,\"sources\":[\"OPENING\"]},{\"at\":\"2026-10-26T06:00\",\"id\":\"DOT-2\",\"qty\":90,\"sources\":[\"SHIP-90\"]}],\"version\":1},\"version\":1}"
+            },
+            "supply": {
+              "by": "KH-TM",
+              "at": "2026-10-29T15:58:33.187Z",
+              "reference": "KH-DIEUCHINH-DEMO-01",
+              "signature": "{\"proposal\":{\"carry\":{\"approval\":\"PD-CHUYENKY-DEMO\",\"owner\":\"Phân xưởng · demo\",\"planId\":\"KH-KYSAU-DEMO\",\"qty\":50},\"demand\":170,\"note\":\"GIẢ LẬP · tách đợt; đợt sau phụ thuộc nguồn thực tế.\",\"option\":\"B\",\"qty\":0,\"readyAt\":\"2026-10-26T06:00\",\"source\":\"KH-DIEUCHINH-DEMO-01\",\"stages\":[{\"at\":\"2026-10-24T07:00\",\"id\":\"DOT-1\",\"qty\":80,\"sources\":[\"OPENING\"]},{\"at\":\"2026-10-26T06:00\",\"id\":\"DOT-2\",\"qty\":90,\"sources\":[\"SHIP-90\"]}],\"version\":1},\"version\":1}"
+            }
+          },
+          "version": 1
+        }
+      }
+    ],
+    "closedAt": "2026-10-29T15:59:00.964Z",
+    "closeKind": "execution",
+    "closeReason": "Hoàn tất thực thi B; phần chuyển kỳ được tiếp nhận riêng, không coi là đã đáp ứng."
+  },
+  "events": [
+    {
+      "id": "707d11dc-f424-4588-a671-1f8ad883bde2",
+      "at": "2026-10-29T15:59:00.964Z",
+      "role": "Giám đốc Nhà máy",
+      "action": "Hoàn tất thực thi",
+      "detail": "v1 · ",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "f0c110f8-11ec-409b-bf9d-4efe2a8375e4",
+      "at": "2026-10-29T15:59:00.737Z",
+      "role": "Giám đốc Nhà máy",
+      "action": "confirm_carry",
+      "detail": "v1 · ",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "80cb37c1-88d4-4982-9056-5de6ad8f84fe",
+      "at": "2026-10-29T15:59:00.330Z",
+      "role": "Phân xưởng",
+      "action": "Thêm / xác nhận bằng chứng",
+      "detail": "carry_plan · v1",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "c0895d25-6a20-48e7-a4a6-5cd20041246b",
+      "at": "2026-10-29T15:58:55.196Z",
+      "role": "Phân xưởng",
+      "action": "confirm_stage",
+      "detail": "v1 · DOT-2",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "dd4ee2c9-867f-40ad-997d-3ef4a99bd52e",
+      "at": "2026-10-29T15:58:54.872Z",
+      "role": "KH-TM",
+      "action": "confirm_source",
+      "detail": "v1 · SHIP-90",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "bbee4394-f372-4395-8bad-6826993159d7",
+      "at": "2026-10-29T15:58:54.556Z",
+      "role": "QA/QC",
+      "action": "confirm_source",
+      "detail": "v1 · SHIP-90",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "381b6d37-f95d-4143-b6e3-a2a985340a5d",
+      "at": "2026-10-29T15:58:54.251Z",
+      "role": "Kho vận",
+      "action": "confirm_source",
+      "detail": "v1 · SHIP-90",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "a88d0b4f-8c9a-4a98-9aef-67bf4fb80dc2",
+      "at": "2026-10-29T15:58:53.960Z",
+      "role": "Kho vận",
+      "action": "source_actual",
+      "detail": "v1 · ",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "93f4241b-dd98-4081-935d-0f3e3e5d8828",
+      "at": "2026-10-29T15:58:48.531Z",
+      "role": "Phân xưởng",
+      "action": "Thêm / xác nhận bằng chứng",
+      "detail": "execution · v1",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "50c265ad-5126-4697-87e5-81016b91a779",
+      "at": "2026-10-29T15:58:48.162Z",
+      "role": "Phân xưởng",
+      "action": "confirm_stage",
+      "detail": "v1 · DOT-1",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "239d6c43-a743-482f-be82-56ebf3cc2e64",
+      "at": "2026-10-29T15:58:47.875Z",
+      "role": "Phân xưởng",
+      "action": "Thêm / xác nhận bằng chứng",
+      "detail": "execution · v1",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "b079c642-582a-4555-9938-9669b0d2b5a7",
+      "at": "2026-10-29T15:58:47.524Z",
+      "role": "Phân xưởng",
+      "action": "Thêm / xác nhận bằng chứng",
+      "detail": "revised_plan · v1",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "ee696c2f-d117-4f4b-999f-82a11850ddb1",
+      "at": "2026-10-29T15:58:47.142Z",
+      "role": "Kho vận",
+      "action": "stage_execution",
+      "detail": "v1 · ",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "427fd08c-c55f-4291-a411-6245af4d00dd",
+      "at": "2026-10-29T15:58:46.568Z",
+      "role": "Kho vận",
+      "action": "stage_execution",
+      "detail": "v1 · ",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "5ca2cbe3-3b57-445f-92e4-7155d0009702",
+      "at": "2026-10-29T15:58:34.443Z",
+      "role": "Tổng Giám đốc SFG",
+      "action": "Phê duyệt",
+      "detail": "v1",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "7b029d0d-d57d-4531-bef2-ba761739f2c2",
+      "at": "2026-10-29T15:58:34.123Z",
+      "role": "Giám đốc Nhà máy",
+      "action": "Trình Tổng Giám đốc",
+      "detail": "v1",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "4f307a1c-1e3a-4ce5-a237-c7d2e42e4626",
+      "at": "2026-10-29T15:58:33.795Z",
+      "role": "Kho vận",
+      "action": "Trình hồ sơ",
+      "detail": "v1; đã chụp checklist tại thời điểm trình.",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "cd503cff-4c33-4792-a1e9-fb916e44f15a",
+      "at": "2026-10-29T15:58:33.187Z",
+      "role": "KH-TM",
+      "action": "Xác minh phương án",
+      "detail": "B; đủ bộ phận",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "f5619057-569a-493e-bd8f-c44bb613b22f",
+      "at": "2026-10-29T15:58:32.874Z",
+      "role": "Phân xưởng",
+      "action": "Xác minh phương án",
+      "detail": "B; chờ bộ phận còn lại",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "fec1df21-b594-41fe-a736-caae1eee0b88",
+      "at": "2026-10-29T15:58:32.557Z",
+      "role": "Kho vận",
+      "action": "Kiểm tra nhận định",
+      "detail": "C3 · accepted ·  · Đã đối chiếu",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "b61a9f4a-bb0b-43bd-8a68-a0b27ecde87e",
+      "at": "2026-10-29T15:58:32.264Z",
+      "role": "Kho vận",
+      "action": "Kiểm tra nhận định",
+      "detail": "C2 · accepted ·  · Đã đối chiếu",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "ec153fe5-1c1b-4058-9534-06ac101911ca",
+      "at": "2026-10-29T15:58:31.977Z",
+      "role": "Kho vận",
+      "action": "Kiểm tra nhận định",
+      "detail": "C1 · accepted ·  · Đã đối chiếu",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "94f177f9-94d0-4620-8058-79f679ca9a32",
+      "at": "2026-10-29T15:58:26.935Z",
+      "role": "Kho vận",
+      "action": "Soạn nhận định",
+      "detail": "Nhận định template; model không gọi; bắt buộc kiểm tra từng mục.",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "96ee5587-fa15-4872-a1a6-032da130ef01",
+      "at": "2026-10-29T15:58:26.680Z",
+      "role": "Kho vận",
+      "action": "Thêm / xác nhận bằng chứng",
+      "detail": "plan · v1",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "6ab5781d-0de9-400d-bb97-8dbdf2dd8088",
+      "at": "2026-10-29T15:58:26.651Z",
+      "role": "Kho vận",
+      "action": "Thêm / xác nhận bằng chứng",
+      "detail": "quality · v1",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "504b02cc-dd17-4c17-bc2b-548c567386b3",
+      "at": "2026-10-29T15:58:26.625Z",
+      "role": "Kho vận",
+      "action": "Thêm / xác nhận bằng chứng",
+      "detail": "inventory · v1",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "27473427-ca6e-4673-8a41-72b11a2ca9b4",
+      "at": "2026-10-29T15:58:26.361Z",
+      "role": "Kho vận",
+      "action": "Lưu phương án",
+      "detail": "B; cần kiểm tra lại nhận định và xác nhận chuyên môn.",
+      "caseId": "EX-0041"
+    },
+    {
+      "id": "c686f51e-a6f1-4704-a394-b5090b5f6c13",
+      "at": "2026-10-29T15:58:17.988Z",
+      "role": "Kho vận",
+      "action": "Mở hồ sơ",
+      "detail": "KALI|2026-10; -120 tấn.",
+      "caseId": "EX-0041"
+    }
+  ]
+}

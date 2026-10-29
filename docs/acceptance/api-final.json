@@ -1,0 +1,185 @@
+{
+  "at": "2026-10-29T16:13:26.628Z",
+  "scope": "API governance, dedicated synthetic owner; no browser/file download",
+  "base": "http://127.0.0.1:8787",
+  "checks": [
+    {
+      "action": "reset",
+      "role": "ops",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "run",
+      "role": "ops",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "proposal",
+      "role": "ops",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "confirm_proposal",
+      "role": "director",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "result": "PASS",
+      "error": "Vai trò mô phỏng hiện tại không được thực hiện thao tác này."
+    },
+    {
+      "action": "confirm_proposal",
+      "role": "workshop",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "confirm_proposal",
+      "role": "supply",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "narrative",
+      "role": "ops",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "review_claim",
+      "role": "ops",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "review_claim",
+      "role": "ops",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "review_claim",
+      "role": "ops",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "evidence",
+      "role": "ops",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "evidence",
+      "role": "ops",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "evidence",
+      "role": "ops",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "submit",
+      "role": "ops",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "run",
+      "role": "ops",
+      "expectedStatus": 409,
+      "actualStatus": 409,
+      "result": "PASS",
+      "error": "Dữ liệu đã thay đổi ở cửa sổ khác. Tải lại rồi thao tác."
+    },
+    {
+      "action": "forward",
+      "role": "director",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "approve",
+      "role": "ceo",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "stage_execution",
+      "role": "ops",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "evidence",
+      "role": "workshop",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "confirm_stage",
+      "role": "workshop",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "result": "PASS",
+      "error": "Nguồn phụ thuộc chưa thực sự sẵn sàng; không xác nhận hoàn tất."
+    },
+    {
+      "action": "close",
+      "role": "director",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "result": "PASS",
+      "error": "Thiếu kế hoạch điều chỉnh đúng phiên bản, mã kế hoạch. DOT-1: chưa đủ lượng, đúng hạn và xác nhận Phân xưởng. DOT-1: thiếu chứng từ thực hiện đúng phiên bản/đợt. DOT-2: chưa đủ lượng, đúng hạn và xác nhận Phân xưởng. DOT-2: SHIP-90 chưa thực sự sẵn sàng. Phần chuyển kỳ chưa có liên kết xử lý được Giám đốc xác nhận đúng phiên bản."
+    },
+    {
+      "action": "save_inputs",
+      "role": "ops",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
+      "action": "run",
+      "role": "invalid-role",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "result": "PASS",
+      "error": "Vai trò demo không hợp lệ."
+    },
+    {
+      "action": "run",
+      "role": "ops",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "result": "PASS",
+      "error": "Yêu cầu khác nguồn bị từ chối."
+    }
+  ],
+  "summary": {
+    "pass": 24,
+    "fail": 0
+  }
+}
