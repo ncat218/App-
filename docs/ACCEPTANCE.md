@@ -1,10 +1,10 @@
-# Đối chiếu yêu cầu và nghiệm thu Governance v2
+# Đối chiếu yêu cầu và nghiệm thu Governance
 
-Ngày kiểm tra: **29/10/2026**. Mã nguồn chức năng: **a69670b**. Bộ chứng cứ đi kèm là dữ liệu giả lập, không phải pilot nhà máy.
+Đợt kiểm tra gốc: **29/10/2026**, commit **a69670b**. Bổ sung đối chiếu report mới ngày **30/10/2026**. Bộ chứng cứ đi kèm là dữ liệu giả lập, không phải pilot nhà máy.
 
 ## Kết quả
 
-- **68/68** ca tự động: [unit-tests.tap](acceptance/unit-tests.tap); đầu vào, thay đổi và đáp án kỳ vọng nằm trong từng test cùng số thứ tự tại [engine.test.ts](../tests/engine.test.ts).
+- **72/72** ca tự động trên mã hiện tại: [engine.test.ts](../tests/engine.test.ts). File [unit-tests.tap](acceptance/unit-tests.tap) là kết quả 68 ca của đợt gốc; không được ghi là log 72 ca.
 - TypeScript và production build: PASS. Không thay dependency hoặc bảng SQL; schemaVersion 2 nằm trong payload JSON.
 - API/database/R2/report smoke: PASS ở lượt QA trước chốt cuối; mã xử lý tệp không thay đổi. API Governance bản cuối được kiểm tra riêng, không tải tệp: [api-final.json](acceptance/api-final.json).
 - Qua UI bản cuối: A từ đầu vào → trình → trả lại → v2 → duyệt → thực nhận → Kho vận/Kế toán/QA → đóng. B từ đầu vào → 80/90/50 → Phân xưởng/KH-TM → duyệt có điều kiện → chặn nguồn chưa sẵn sàng → đủ nguồn → chặn thiếu chuyển kỳ → đủ liên kết → đóng. Đã mở tờ trình HTML và kiểm tra hai đợt, phần chuyển kỳ, cân đối, xác nhận.
@@ -31,12 +31,13 @@ Ngày kiểm tra: **29/10/2026**. Mã nguồn chức năng: **a69670b**. Bộ ch
 | V5 | Evidence version + executionId; dùng lại cần lý do và vai trò chuyên môn; không tự nâng chứng từ cũ | 29–30, 57, 64, 66 |
 | R1–R4 | Bảy vai trò mô phỏng; năm xác nhận đầu vào riêng; A/B và thực nhận đúng bộ phận; backend kiểm tra vai trò; UI ghi rõ mô phỏng | 17, 38–39, 46, 66; UI A/B |
 | AI1–AI2 | Thân tờ trình chỉ accepted/edited; Review_Log có trước/sau, DATA/RULE/LLM/FLOW, lý do, người, phiên bản | 42–43 |
-| AI3–AI6 | Cấu hình và kết quả riêng; model phản hồi/token nếu có; gửi số khóa/lịch/phương án/nguồn; kiểm tra trường/nguồn; vẫn pending | 49–55, 68 (mock) + kiểm tra kết nối Gemini thật 30/10 |
+| AI3–AI6 | Cấu hình và kết quả riêng; model phản hồi/token nếu có; chỉ gửi số khóa, trạng thái nguồn, phiên bản/mã căn cứ; kiểm tra trường/nguồn; vẫn pending | 49–55, 68, 71 (mock) + kiểm tra kết nối Gemini thật 30/10 |
 | F1 | DATA_HOLD vẫn có risk_notice, người và hạn; không có số chính thức | 12, 44 |
 | F2–F3 | close_verified cần cân đối mới đủ, căn cứ và GĐ; closeKind khác thực thi và không cộng KPI thực thi | 45; UI có nhánh riêng |
-| F4 | A: đủ lượng, kịp hạn, order/receipt/release cùng version/receiptId, Kho vận/Kế toán/QA đúng lần nhận; đổi lượng/ngày hủy xác nhận | 19, 22, 30, 46, 64; UI A |
+| F4 | A: đủ lượng, kịp hạn và cân đối mọi mốc liên quan, order/receipt/release cùng version/receiptId, Kho vận/Kế toán/QA đúng lần nhận; đổi lượng/ngày hủy xác nhận | 19, 22, 30, 46, 64, 69; UI A |
+| F5 | B: revised_plan đúng quyết định/phiên bản trước từng xác nhận; Kho vận và Phân xưởng cùng xác nhận mỗi đợt | 20, 70 |
 | UI1 | Chụp checklist và evidenceIds lúc trình; thêm muộn không hồi tố | 47 |
-| UI2 | Số mốc cân đối và số hồ sơ tách đơn vị; approvedVersion phải khớp hiện hành; G-Score N/A | Kiểm tra dashboard / mã KPI |
+| UI2 | Số mốc cân đối và số hồ sơ tách đơn vị; lượt trình và Sevid tính theo lịch sử phiên bản; approvedVersion phải khớp hiện hành; G-Score N/A | 72, kiểm tra dashboard / mã KPI |
 | UI3–UI5 | HTML/PDF source và JSON cùng stages/carry/confirm/version; điền demo không tự xác nhận; mẫu, README, quy trình đã cập nhật | 56, 58; UI A/B và HTML |
 
 Các test 01–22 giữ các nhóm hồi quy cũ nhưng cập nhật chốt mới; test B một lượng 170 tại một lịch đã được thay bằng kiểm thử hai đợt. Không coi con số “22” cũ là đã nghiệm thu B mới.

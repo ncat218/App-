@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-29T16:13:26.628Z",
+  "at": "2026-10-30T16:24:05.085Z",
   "scope": "API governance, dedicated synthetic owner; no browser/file download",
   "base": "http://127.0.0.1:8787",
   "checks": [
@@ -125,6 +125,13 @@
       "result": "PASS"
     },
     {
+      "action": "evidence",
+      "role": "workshop",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "result": "PASS"
+    },
+    {
       "action": "stage_execution",
       "role": "ops",
       "expectedStatus": 200,
@@ -152,7 +159,7 @@
       "expectedStatus": 400,
       "actualStatus": 400,
       "result": "PASS",
-      "error": "Thiếu kế hoạch điều chỉnh đúng phiên bản, mã kế hoạch. DOT-1: chưa đủ lượng, đúng hạn và xác nhận Phân xưởng. DOT-1: thiếu chứng từ thực hiện đúng phiên bản/đợt. DOT-2: chưa đủ lượng, đúng hạn và xác nhận Phân xưởng. DOT-2: SHIP-90 chưa thực sự sẵn sàng. Phần chuyển kỳ chưa có liên kết xử lý được Giám đốc xác nhận đúng phiên bản."
+      "error": "DOT-1: chưa đủ lượng, đúng hạn và xác nhận Kho vận / Phân xưởng. DOT-1: thiếu chứng từ thực hiện đúng phiên bản/đợt. DOT-2: chưa đủ lượng, đúng hạn và xác nhận Kho vận / Phân xưởng. DOT-2: SHIP-90 chưa thực sự sẵn sàng. Phần chuyển kỳ chưa có liên kết xử lý được Giám đốc xác nhận đúng phiên bản."
     },
     {
       "action": "save_inputs",
@@ -179,7 +186,7 @@
     }
   ],
   "summary": {
-    "pass": 24,
+    "pass": 25,
     "fail": 0
   }
 }

@@ -21,6 +21,7 @@ await call('narrative',c());for(const claim of s.cases[0].claims)await call('rev
 for(const kind of ['inventory','quality','plan'])await call('evidence',c({kind,reference:'TEST-'+kind}));
 await call('submit',c());await call('run',{},'ops',409,{revision:s.revision-1});
 await call('forward',c(),'director');await call('approve',c(),'ceo');
+await call('evidence',c({kind:'revised_plan',reference:'KH-TEST-B',executionId:'KH-TEST-B'}),'workshop');
 await call('stage_execution',c({stage:{id:'DOT-2',qty:90,at:'2026-10-26T06:00',reference:'TH-DOT2'}}));
 await call('evidence',c({kind:'execution',reference:'TH-DOT2',executionId:'DOT-2'}),'workshop');
 const blocked=await call('confirm_stage',c({stageId:'DOT-2'}),'workshop',400);assert.match(blocked.error,/chưa thực sự sẵn sàng/);

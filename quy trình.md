@@ -42,7 +42,7 @@ Lặp lại cho nguyên liệu thực sự thay đổi. Nếu nhập chuyến re
 
 ## 3. Workflow A · bổ sung 140 tấn
 
-1. Kho vận bấm **Bắt đầu kịch bản EX-0041** hoặc chạy cân đối. Mở hồ sơ **EX-0041**.
+1. Kho vận bấm **Bắt đầu kịch bản EX-0041** hoặc chạy cân đối. Mở hồ sơ **EX-0041**. Nếu nhập thêm ca nhu cầu trong cùng hồ sơ, A sẽ gợi ý lượng đủ dự trữ tại mọi mốc liên quan; không giữ cứng 140 tấn.
 2. Tab **Nhận định & phương án** → A có sẵn 140 tấn, lịch trước ca, mã `KH-TM-DEMO-01` → **Lưu phương án**.
 3. Bấm **Thêm bộ căn cứ demo** ở khung Chứng từ. Đây là căn cứ tồn, chất lượng, kế hoạch ban đầu đúng phiên bản; không thay xác nhận thực nhận sau này.
 4. Bấm **Soạn nhận định** → đọc C1–C3 → **Chấp nhận C1/C2/C3**. Nếu sửa/bác bỏ: nhập lý do, chọn DATA/RULE/LLM/FLOW. Nhận định bác bỏ chỉ ở lịch sử, không vào thân tờ trình.
@@ -74,12 +74,12 @@ Lặp lại cho nguyên liệu thực sự thay đổi. Nếu nhập chuyến re
 3. **Lưu phương án → Thêm bộ căn cứ demo → Soạn nhận định → Chấp nhận C1/C2/C3**.
 4. **Phân xưởng → Xác minh phương án**: xác nhận tách lệnh, quy mô mẻ, ảnh hưởng kế hoạch. **KH-TM → Xác minh phương án**: xác nhận lịch nguồn phụ thuộc. Cần đủ cả hai; Giám đốc không xác minh thay Phân xưởng.
 5. Kho vận trình → Giám đốc kiểm tra & trình → Tổng Giám đốc phê duyệt như A.
-6. Tab **Theo dõi thực thi**, Phân xưởng thêm chứng từ **Kế hoạch điều chỉnh đã duyệt**, mã `KH-DIEUCHINH-DEMO-01`, liên kết đúng mã này, phiên bản hiện hành. Kế hoạch ban đầu không thay chứng từ này.
-7. Kho vận → **Điền mẫu DOT-1 → Lưu DOT-1**. Phân xưởng thêm **Chứng từ thực hiện từng đợt**, mã `TH-DOT-1-GIẢ-LẬP`, liên kết `DOT-1`, phiên bản hiện hành → **Xác nhận DOT-1**.
+6. Tab **Theo dõi thực thi**, Phân xưởng thêm chứng từ **Kế hoạch điều chỉnh đã duyệt**, mã `KH-DIEUCHINH-DEMO-01`, liên kết đúng mã này, phiên bản hiện hành. Kế hoạch ban đầu không thay chứng từ này. Phải gắn trước lần xác nhận đầu tiên của từng đợt.
+7. Kho vận → **Điền mẫu DOT-1 → Lưu DOT-1**. Phân xưởng thêm **Chứng từ thực hiện từng đợt**, mã `TH-DOT-1-GIẢ-LẬP`, liên kết `DOT-1`, phiên bản hiện hành. Kho vận bấm **Xác nhận DOT-1 · Kho vận**, sau đó Phân xưởng bấm **Xác nhận DOT-1 · Phân xưởng**.
 8. Thử nhánh chặn: Kho vận điền/lưu DOT-2, Phân xưởng thêm chứng từ thực hiện liên kết `DOT-2` rồi bấm **Xác nhận DOT-2** khi nguồn vẫn chưa có thực tế. App phải báo **Nguồn phụ thuộc chưa thực sự sẵn sàng**. Giám đốc chưa được đóng.
 9. Trong khung **Nguồn phụ thuộc**: Kho vận hoặc KH-TM bấm **Điền mẫu nguồn SHIP-90 → Lưu thực tế SHIP-90**. Mẫu gồm 90 tấn và đủ bốn mốc thực tế theo thứ tự. Đây là bước tạo số liệu giả lập có chủ ý cho demo, không phải cập nhật tự động từ nhà máy.
 10. Kho vận, QA/QC, KH-TM lần lượt bấm **Xác nhận nguồn SHIP-90**. Cả ba phải có xác nhận trên đúng dữ liệu nguồn đang lưu. Sửa thực tế nguồn sẽ hủy xác nhận cũ.
-11. Phân xưởng → **Xác nhận DOT-2**. Nếu đã xác nhận đợt 2 rồi lại sửa nguồn, phải xác nhận lại đợt phụ thuộc.
+11. Kho vận → **Xác nhận DOT-2 · Kho vận**; Phân xưởng → **Xác nhận DOT-2 · Phân xưởng**. Nếu đã xác nhận đợt 2 rồi lại sửa nguồn, phải xác nhận lại đợt phụ thuộc.
 12. Phân xưởng thêm **Kế hoạch tiếp nhận chuyển kỳ**, mã `PD-CHUYENKY-DEMO`, liên kết `KH-KYSAU-DEMO`, phiên bản hiện hành. Giám đốc → **Xác nhận liên kết chuyển kỳ**.
 13. Giám đốc xem khung điều kiện rồi **Xác nhận đóng hồ sơ**. Thiếu kế hoạch điều chỉnh, đợt thực thi, nguồn thực tế, xác nhận, hoặc liên kết 50 tấn sẽ bị chặn và nêu mục thiếu.
 14. Xuất tờ trình HTML/PDF và JSON. Cả hai phải có DOT-1/DOT-2, 50 tấn chuyển kỳ, nguồn, xác nhận và phiên bản. Đóng B có nghĩa đã thực hiện 170 tấn và xác nhận liên kết xử lý 50 tấn; **không tuyên bố đã đáp ứng đủ 220**.
@@ -105,7 +105,7 @@ Ví dụ bỏ xác nhận tổng hợp hoặc thiếu căn cứ loại trùng �
 
 ## 8. Gemini và bằng chứng thử nghiệm
 
-Không có key: **mẫu tĩnh**. Có key: backend gửi số khóa, phiên bản, lịch cung, phương án đã lưu và mã căn cứ; không gửi tệp đính kèm để OCR. Đầu ra thiếu trường / nguồn ngoài danh mục / lỗi API: **mẫu dự phòng**, không gắn Gemini thành công.
+Không có key: **mẫu tĩnh**. Có key: backend chỉ gửi số khóa từ Rule Engine, phiên bản, trạng thái nguồn và danh mục mã căn cứ; không gửi phương án A/B hay tệp đính kèm để OCR. Gemini chỉ soạn ba nhận định cốt lõi. Đầu ra thiếu trường / nguồn ngoài danh mục / lỗi API: **mẫu dự phòng**, không gắn Gemini thành công. Câu hỏi và căn cứ do AI gợi ý chỉ hỗ trợ rà soát, nằm ở lịch sử, không vào thân tờ trình.
 
 Trong tab nhận định có trạng thái, model phản hồi thật và nút **Xuất lịch sử Gemini (model / token)**. Token chỉ lưu khi API trả; không suy ra chi phí từ dự toán. Tất cả phản hồi đều chờ người kiểm tra; kiểm tra cấu trúc/nguồn không chứng minh AI giữ đúng mọi số.
 
@@ -118,7 +118,7 @@ Trong tab nhận định có trạng thái, model phản hồi thật và nút *
 | Không đủ kiểm tra từng nhận định | Sau lưu phương án, soạn và xử lý lại cả C1–C3; không bỏ mục pending |
 | B chỉ có Phân xưởng xác minh | Chuyển KH-TM xác nhận nguồn phụ thuộc nữa |
 | Thiếu kế hoạch điều chỉnh | Chọn đúng loại, đúng mã liên kết, phiên bản; chứng từ kế hoạch ban đầu không đủ |
-| DOT-2 chưa thực sự sẵn sàng | Lưu thực tế nguồn rồi Kho vận/QA/KH-TM xác nhận; sau đó Phân xưởng xác nhận đợt |
+| DOT-2 chưa thực sự sẵn sàng | Lưu thực tế nguồn rồi Kho vận/QA/KH-TM xác nhận; sau đó Kho vận và Phân xưởng xác nhận đợt |
 | Thiếu chuyển kỳ | Chứng từ carry_plan liên kết KH-KYSAU-DEMO và Giám đốc xác nhận tiếp nhận |
 | A còn chờ Kế toán | Thêm receipt đúng lần nhận rồi Kế toán xác nhận riêng |
 | Sửa đầu vào rồi không chạy được | Hoàn thiện căn cứ và năm xác nhận trên dữ liệu đã lưu, sau đó chạy lại |

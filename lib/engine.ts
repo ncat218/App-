@@ -123,6 +123,7 @@ export type StageExecution = {
     qty: number;
     at: string;
     reference: string;
+    checks?: Partial<Record<'ops' | 'workshop', Confirmation>>;
     confirmation?: Confirmation;
 };
 export type SourceExecution = {
@@ -391,12 +392,32 @@ export function defaultB(c: Case): Proposal {
     return { option: 'B', qty: 0, demand: first + second, readyAt: ship?.readyAt || c.due, source: 'KH-DIEUCHINH-DEMO-01', note: 'GIẢ LẬP · tách đợt; đợt sau phụ thuộc nguồn thực tế.', confirmed: false, stages: [{ id: 'DOT-1', at: c.due, qty: first, sources: ['OPENING'] }, { id: 'DOT-2', at: ship?.readyAt || c.due, qty: second, sources: ship ? [ship.id] : [] }], carry: { qty: total - first - second, planId: 'KH-KYSAU-DEMO', owner: 'Phân xưởng · demo', approval: 'PD-CHUYENKY-DEMO' } };
 }
 function scopedNeeds(c: Case) { return c.snapshot.needs.filter(n => n.material === c.material && (c.needIds ? c.needIds.includes(n.id) : scopeOf(n) === (c.scope || c.due.slice(0, 7)))); }
+function aTimeline(c: Case, qty: number, readyAt: string) {
+    const stock = c.snapshot.stocks.find(s => s.id === c.material)!;
+    const scoped = scopedNeeds(c);
+    const horizon = Math.max(...scoped.filter(n => date(n.at)).map(n => time(n.at)));
+    const needs = c.snapshot.needs.filter(n => n.material === c.material && date(n.at) && time(n.at) > time(c.snapshot.cutoff) && time(n.at) <= horizon);
+    const times = [...new Set(needs.map(n => n.at))].sort((a, b) => time(a) - time(b));
+    return times.map(at => {
+        const demand = needs.filter(n => time(n.at) <= time(at)).reduce((sum, n) => sum + n.qty, 0);
+        const incoming = c.snapshot.shipments.filter(sh => sh.material === c.material && shipmentReleased(sh) && time(sh.readyAt) <= time(at)).reduce((sum, sh) => sum + sourceQty(sh), 0);
+        const firm = stock.qty - stock.held - stock.allocated + incoming - demand;
+        return { at, demand, firm, remaining: firm + (date(readyAt) && time(readyAt) <= time(at) ? qty : 0), dependencies: [] as string[] };
+    });
+}
+export function requiredA(c: Case) {
+    const reserve = c.snapshot.stocks.find(s => s.id === c.material)?.reserve || 0;
+    return Math.max(0, ...aTimeline(c, 0, c.balance.at).map(row => reserve - row.firm));
+}
 export function proposalBalance(c: Case, p: Proposal) {
     const i = c.snapshot, b = c.balance, stock = i.stocks.find(s => s.id === c.material)!;
     check(['A', 'B'].includes(p.option), 'Phương án không hợp lệ.');
     check(num(p.qty) && num(p.demand) && date(p.readyAt), 'Lượng hoặc lịch phương án không hợp lệ.');
-    if (p.option === 'A')
-        return { remaining: b.firm + p.qty, reserve: stock.reserve, need: b.demand, valid: time(p.readyAt) <= time(b.at) && b.firm + p.qty >= stock.reserve, rows: [] as any[], conditional: false };
+    if (p.option === 'A') {
+        const rows = aTimeline(c, p.qty, p.readyAt);
+        const total = scopedNeeds(c).reduce((sum, n) => sum + n.qty, 0);
+        return { remaining: rows.at(-1)?.remaining ?? b.available, reserve: stock.reserve, need: total, valid: rows.length > 0 && time(p.readyAt) >= time(i.cutoff) && rows.every(row => row.remaining >= stock.reserve), rows, conditional: false };
+    }
     const stages = p.stages || [];
     const scoped = scopedNeeds(c), scopedIds = new Set(scoped.map(n => n.id));
     const total = scoped.reduce((a, n) => a + n.qty, 0);
@@ -423,12 +444,21 @@ export function proposalBalance(c: Case, p: Proposal) {
     return { remaining: rows.at(-1)?.remaining ?? b.available, reserve: stock.reserve, need: total, valid, rows, conditional: rows.some(r => r.dependencies.length > 0) };
 }
 export function currentEvidence(c: Case, kind: string, executionId?: string) { return c.evidence.some(e => e.kind === kind && e.version === c.version && (executionId === undefined || e.executionId === executionId)); }
+function currentRevisedPlan(c: Case) { return !!c.proposal && currentEvidence(c, 'revised_plan', c.proposal.source) && !!c.decisions?.some(d => d.version === c.version && d.proposal.source === c.proposal?.source); }
 function caseSignature(c: Case, i: Inputs) {
     const v = plainInputs(i), horizon = Math.max(time(c.balance.at), ...(c.proposal?.stages || []).map(x => time(x.at)), ...c.snapshot.needs.filter(n => n.material === c.material && scopeOf(n) === c.scope).map(n => time(n.at)));
     return stable({ cutoff: v.cutoff, planVersion: v.planVersion, stock: v.stocks.find(x => x.id === c.material), needs: v.needs.filter(n => n.material === c.material && (c.needIds?.includes(n.id) || scopeOf(n) === (c.scope || c.due.slice(0, 7)) || time(n.at) <= horizon)), shipments: v.shipments.filter(x => x.material === c.material) });
 }
 export function caseCurrent(c: Case, s: State) { return caseSignature(c, c.snapshot) === caseSignature(c, s.inputs); }
 export function submissionChecklist(c: Case, s: State) { return { data: caseCurrent(c, s) && !validate(c.snapshot).length, evidence: ['inventory', 'quality', 'plan'].every(k => currentEvidence(c, k)), claims: c.claims.length > 0 && c.claims.every(x => x.status !== 'pending') && c.claims.some(x => ['accepted', 'edited'].includes(x.status)), proposal: !!c.proposal?.confirmed && c.proposal.version === c.version }; }
+export function submissionMetrics(s: State) {
+    const versions = new Map<string, NonNullable<Case['submission']>>();
+    for (const c of s.cases)
+        for (const submission of [...(c.submissions || []), ...(c.submission ? [c.submission] : [])])
+            versions.set(`${c.id}:v${submission.version}`, submission);
+    const submitted = [...versions.values()];
+    return { submitted: submitted.length, evidenceComplete: submitted.filter(x => Object.values(x.checklist).every(Boolean)).length };
+}
 function archive(c: Case) { const { history, ...previous } = structuredClone(c); c.history = [...(history || []), previous]; }
 function receiptSignature(c: Case) { return stable({ version: c.version, id: c.execution.receiptId, qty: c.execution.qty, at: c.execution.at }); }
 function sourceSignature(x: SourceExecution) { return stable({ id: x.id, qty: x.qty, milestones: x.milestones, reference: x.reference }); }
@@ -475,16 +505,18 @@ export function closureIssues(c: Case): string[] {
                 errors.push(`Chờ ${roles[r]} xác nhận đúng lần nhận.`);
         if (!['order', 'receipt', 'release'].every(k => currentEvidence(c, k, c.execution.receiptId)))
             errors.push('Thiếu chứng từ đúng phiên bản và lần nhận (lệnh, nhận, QA).');
+        if (date(c.execution.at) && aTimeline(c, c.execution.qty, c.execution.at).some(row => row.remaining < c.snapshot.stocks.find(st => st.id === c.material)!.reserve))
+            errors.push('Thực nhận chưa cân đối đủ mọi mốc nhu cầu trong phạm vi hồ sơ.');
     }
     else {
         if (!executionBalance(c))
             errors.push('Thực hiện không cân đối tại mọi mốc lũy kế.');
-        if (!currentEvidence(c, 'revised_plan', p.source))
+        if (!currentRevisedPlan(c))
             errors.push('Thiếu kế hoạch điều chỉnh đúng phiên bản, mã kế hoạch.');
         for (const st of p.stages || []) {
             const ex = c.execution.stages?.find(x => x.id === st.id);
-            if (!ex || ex.qty !== st.qty || !date(ex.at) || time(ex.at) > time(st.at) || ex.confirmation?.signature !== stageSignature(ex, c))
-                errors.push(`${st.id}: chưa đủ lượng, đúng hạn và xác nhận Phân xưởng.`);
+            if (!ex || ex.qty !== st.qty || !date(ex.at) || time(ex.at) > time(st.at) || !(['ops', 'workshop'] as const).every(r => ex.checks?.[r]?.signature === stageSignature(ex, c)))
+                errors.push(`${st.id}: chưa đủ lượng, đúng hạn và xác nhận Kho vận / Phân xưởng.`);
             if (!currentEvidence(c, 'execution', st.id))
                 errors.push(`${st.id}: thiếu chứng từ thực hiện đúng phiên bản/đợt.`);
             for (const id of st.sources.filter(x => x !== 'OPENING'))
@@ -597,7 +629,7 @@ export function transition(original: State, role: Role, action: string, p: any):
             const material = needs[0].material, scope = scopeOf(needs[0]);
             const times = new Set(needs.map(n => n.at));
             const balances = s.balances.filter(b => b.material === material && times.has(b.at));
-            const b = balances.find(b => b.level === 2) || balances.find(b => b.level === 1);
+            const b = balances.find(b => b.level !== 0);
             let c = s.cases.find(c => (c.eventKey || `${c.material}|${c.scope || c.due.slice(0, 7)}`) === key && c.status !== 'closed');
             if (!c && s.cases.some(c => c.eventKey === key && c.status === 'closed' && caseCurrent(c, s)))
                 continue;
@@ -685,7 +717,9 @@ export function transition(original: State, role: Role, action: string, p: any):
         check(p.proposal?.source?.trim(), 'Cần căn cứ phương án.');
         check(proposalBalance(c, p.proposal).valid, 'Phương án không cân đối tại mọi mốc, thiếu nguồn hoặc phần chuyển kỳ.');
         c.proposal = { ...p.proposal, confirmed: false, checks: {}, version: c.version };
-        if (c.proposal!.option === 'B') {
+        if (c.proposal!.option === 'A')
+            c.proposal!.demand = scopedNeeds(c).reduce((sum, n) => sum + n.qty, 0);
+        else {
             c.proposal!.demand = c.proposal!.stages!.reduce((a, x) => a + x.qty, 0);
             c.proposal!.readyAt = [...c.proposal!.stages!].sort((a, b) => time(b.at) - time(a.at))[0].at;
         }
@@ -823,16 +857,18 @@ export function transition(original: State, role: Role, action: string, p: any):
             check(st && num(x.qty) && date(x.at) && x.reference?.trim(), 'Cần đợt, lượng, thời điểm, chứng từ thực hiện.');
             check(x.qty <= st!.qty, 'Thực hiện vượt lượng đợt đã duyệt.');
             c.execution.stages = (c.execution.stages || []).filter(s => s.id !== x.id);
-            c.execution.stages.push({ ...x, confirmation: undefined });
+            c.execution.stages.push({ ...x, checks: {}, confirmation: undefined });
         }
         else if (action === 'confirm_stage') {
-            allowed(role, ['workshop']);
+            allowed(role, ['ops', 'workshop']);
             const x = c.execution.stages?.find(x => x.id === p.stageId), st = c.proposal?.stages?.find(x => x.id === p.stageId);
             check(x && st && x.qty === st.qty && time(x.at) <= time(st.at), 'Đợt chưa đủ lượng hoặc trễ lịch.');
+            check(currentRevisedPlan(c), 'Cần kế hoạch điều chỉnh được duyệt, đúng mã và phiên bản trước khi xác nhận từng đợt.');
             check(currentEvidence(c, 'execution', x!.id), 'Thiếu chứng từ thực hiện đúng đợt.');
             check(st!.sources.filter(id => id !== 'OPENING').every(id => sourceReady(c, id, x!.at)), 'Nguồn phụ thuộc chưa thực sự sẵn sàng; không xác nhận hoàn tất.');
             check(executionBalance(c), 'Lịch thực hiện làm thiếu dự trữ tại một mốc lũy kế.');
-            x!.confirmation = confirmation(role, p.reference || x!.reference, stageSignature(x!, c));
+            x!.checks ||= {};
+            x!.checks[role as 'ops' | 'workshop'] = confirmation(role, p.reference || x!.reference, stageSignature(x!, c));
         }
         else if (action === 'confirm_carry') {
             allowed(role, ['director']);

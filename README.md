@@ -4,6 +4,8 @@ App web demo có frontend, backend, database và lưu chứng từ, dựa trên 
 
 **Hướng dẫn thao tác demo:** [Quy trình từng workflow, vai trò và nút bấm](quy%20tr%C3%ACnh.md).
 
+**Video nộp tối đa 5 phút:** [Hướng dẫn quay và lời thoại từng thao tác](Huong_dan_demo_GSync_5_phut.docx). [Đối chiếu report mới nhất và tiêu chí chấm](docs/REPORT-ALIGNMENT.md).
+
 **Bản Governance v2:** B hai đợt 80 + 90 tấn, 50 tấn chuyển kỳ; xác nhận chuyên môn và chứng từ đúng phiên bản. [Đối chiếu yêu cầu / kiểm thử](docs/ACCEPTANCE.md).
 
 ## Hướng dẫn chạy app
@@ -113,7 +115,7 @@ Mở URL mà terminal in ra (mặc định **http://127.0.0.1:8787**). Dữ li�
 3. **EX-0041:** lập/lưu phương án A hoặc B trước, thêm căn cứ giả lập, soạn và kiểm tra từng nhận định.
 4. **Chuyển vai trò mô phỏng:** KH-TM xác minh A; **Phân xưởng + KH-TM** xác minh B. Năm xác nhận đầu vào tách riêng Kho vận/Kế toán/QA/Phân xưởng/KH-TM. Bộ mẫu ghi rõ xác nhận giả lập.
 5. **Kho vận** trình → **Giám đốc Nhà máy** kiểm tra/trình → **Tổng Giám đốc SFG** duyệt. Có nhánh từ chối và yêu cầu bổ sung có lý do.
-6. **Thực thi A:** 140 tấn trước ca, chứng từ đúng phiên bản/lần nhận; **Kho vận, Kế toán, QA/QC** xác nhận riêng. **B:** hai đợt 80 + 90 tấn; nguồn SHIP-90 phải có bốn mốc thực tế và ba xác nhận khi thực thi, kèm kế hoạch điều chỉnh và liên kết xử lý 50 tấn chuyển kỳ.
+6. **Thực thi A:** 140 tấn trước ca, chứng từ đúng phiên bản/lần nhận; **Kho vận, Kế toán, QA/QC** xác nhận riêng, kiểm tra lại toàn bộ mốc nhu cầu liên quan. **B:** hai đợt 80 + 90 tấn; gắn kế hoạch điều chỉnh đúng phiên bản trước từng xác nhận đợt; nguồn SHIP-90 phải có bốn mốc thực tế và ba xác nhận; **Kho vận và Phân xưởng cùng xác nhận mỗi đợt**, kèm liên kết xử lý 50 tấn chuyển kỳ.
 7. **Giám đốc Nhà máy** kiểm tra và đóng hồ sơ. Thiếu lượng, trễ hạn hoặc thiếu bằng chứng sẽ bị backend chặn.
 8. Xem **Audit Trail**, xuất JSON/CSV hoặc xuất tờ trình đầy đủ qua hộp thoại in của trình duyệt. Dùng **Đặt lại kịch bản** ở vai trò Kho vận để quay lại từ đầu.
 
@@ -165,7 +167,7 @@ npm run build
 
 Nếu server local đang chạy tại cổng 8787, có thể chạy thêm `npm run test:api` để kiểm tra API/database/tải tệp/xuất tờ trình bằng dữ liệu test tách riêng.
 
-`npm test` kiểm tra 68 tình huống tự động (22 nhóm hồi quy được cập nhật chốt Governance, B được thay bằng kiểm thử hai đợt; thêm các ca kiểm tra mới): cân đối, biên dự trữ, lịch hàng, nhiều ca, dữ liệu lỗi, phương án A/B, vai trò, phiên bản, trả lại và đóng hồ sơ. Các ca Gemini dùng mock được ghi rõ; không phải lời gọi thật, kết quả pilot nhà máy hay phép đo hiệu quả kinh tế. Xem [ma trận nghiệm thu](docs/ACCEPTANCE.md).
+`npm test` kiểm tra 72 tình huống tự động: cân đối, biên dự trữ, lịch hàng, nhiều ca, dữ liệu lỗi, phương án A/B, vai trò, phiên bản, trả lại và đóng hồ sơ. Các ca Gemini dùng mock được ghi rõ; không phải lời gọi thật, kết quả pilot nhà máy hay phép đo hiệu quả kinh tế. Xem [ma trận nghiệm thu](docs/ACCEPTANCE.md).
 
 ## Phạm vi demo
 
