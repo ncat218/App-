@@ -27,14 +27,14 @@ Dành cho các thành viên đã clone repo, cài thư viện và chạy `setup`
    git pull --ff-only
    ```
 
-4. **Bật Gemini thật trên máy này (chỉ cần làm lần đầu):** tạo tệp cấu hình riêng rồi mở để điền khóa API Gemini của bạn:
+4. **Bật Gemini cho máy này (chỉ cần làm lần đầu):** nhận riêng file `Gemini-demo-config.zip` từ trưởng nhóm. Nếu lưu file trong **Downloads**, giải nén ngay vào thư mục `App-` đang mở trong PowerShell:
 
    ```powershell
-   if (-not (Test-Path .dev.vars)) { Copy-Item .dev.vars.example .dev.vars }
-   notepad .dev.vars
+   Expand-Archive -LiteralPath "$env:USERPROFILE\Downloads\Gemini-demo-config.zip" -DestinationPath . -Force
+   Test-Path .dev.vars
    ```
 
-   Dán khóa vào giữa hai dấu ngoặc kép của `GEMINI_API_KEY=""`, giữ `GEMINI_MODEL="gemini-3.5-flash-lite"`, lưu tệp và đóng Notepad. **Không dán khóa vào README, mã nguồn, commit hoặc GitHub.** Mỗi thành viên cần cấu hình `.dev.vars` riêng; `git pull` không tải khóa về. Nếu máy đã có `.dev.vars` thì không cần làm lại bước này. Sau khi đổi khóa hoặc model, dừng server bằng **Ctrl+C** rồi chạy lại.
+   Lệnh cuối phải hiện `True`. File được giải nén có tên chính xác `.dev.vars`, nằm cạnh `package.json`. Nếu file ZIP được lưu ở chỗ khác, thay đường dẫn sau `-LiteralPath`. Không cần mở hay sửa API key. `git pull` không tải file này về; chỉ nhận qua tin nhắn riêng. Nếu máy đã có `.dev.vars` đúng của nhóm thì bỏ qua bước này. Sau khi thay file, dừng server bằng **Ctrl+C** rồi chạy lại.
 
 5. **Chạy app:**
 
@@ -52,7 +52,7 @@ git pull --ff-only
 npm.cmd run dev
 ```
 
-`npm.cmd run dev` tương đương `npm run dev`, đồng thời tránh lỗi PowerShell chặn `npm.ps1`. Tệp `.dev.vars` được giữ trên máy khi cập nhật Git, nên những lần sau chỉ cần ba lệnh tóm tắt ở trên. Bản cập nhật Gemini này không đổi thư viện hay bảng SQL; không cần cài đặt lại. Nếu bản cập nhật sau có thay đổi thư viện hoặc cấu trúc database, chạy thêm `npm.cmd ci` hoặc `npm.cmd run setup` theo hướng dẫn đi kèm bản cập nhật, trước khi chạy app.
+`npm.cmd run dev` tương đương `npm run dev`, đồng thời tránh lỗi PowerShell chặn `npm.ps1`. Tệp `.dev.vars` được giữ trên máy khi cập nhật Git, nên sau lần giải nén đầu tiên chỉ cần ba lệnh tóm tắt ở trên. Bản cập nhật hướng dẫn này không đổi thư viện hay bảng SQL; không cần cài đặt lại. Nếu bản cập nhật sau có thay đổi thư viện hoặc cấu trúc database, chạy thêm `npm.cmd ci` hoặc `npm.cmd run setup` theo hướng dẫn đi kèm bản cập nhật, trước khi chạy app.
 
 **Riêng bản nâng Governance v2:** không đổi thư viện hoặc bảng SQL. Dữ liệu cũ được giữ; hồ sơ mở cần xem xét lại, không tự cấp xác nhận mới. Nếu muốn quay mới, sao lưu JSON rồi dùng “Đặt lại kịch bản” trong app. Đọc [quy trình.md](quy%20tr%C3%ACnh.md) vì các nút và vai trò B đã thay đổi.
 
@@ -92,6 +92,8 @@ npm run dev
 ```
 
 Mở **http://localhost:5173**. `setup` build ứng dụng và áp dụng migration SQLite local. Lần chạy đầu có thể mất vài phút. Dữ liệu được tự khởi tạo khi mở app.
+
+Muốn dùng Gemini thật ở lần chạy đầu, nhận riêng `Gemini-demo-config.zip` từ trưởng nhóm và làm **bước 4 ở đầu README** sau `npm run setup`, trước `npm run dev`.
 
 Nếu PowerShell chặn `npm.ps1`, dùng `npm.cmd ci`, `npm.cmd run setup`, `npm.cmd run dev`.
 
@@ -142,7 +144,9 @@ Gemini (tùy chọn) chỉ diễn giải số khóa → người dùng kiểm tr
 
 ## Gemini thật (không bắt buộc)
 
-Copy `.dev.vars.example` thành `.dev.vars`, điền:
+Nhóm dùng chung một cấu hình Gemini được gửi riêng dưới dạng `Gemini-demo-config.zip`. Giải nén file `.dev.vars` vào gốc repo `App-` theo **bước 4**; không cần tự gõ khóa. File này không nằm trên GitHub và không bị `git pull` ghi đè. Các máy dùng chung hạn mức của dự án Gemini.
+
+Nếu dùng khóa riêng, copy `.dev.vars.example` thành `.dev.vars` rồi điền:
 
 ```text
 GEMINI_API_KEY="your-key"
