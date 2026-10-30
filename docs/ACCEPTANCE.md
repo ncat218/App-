@@ -9,7 +9,7 @@ Ngày kiểm tra: **29/10/2026**. Mã nguồn chức năng: **a69670b**. Bộ ch
 - API/database/R2/report smoke: PASS ở lượt QA trước chốt cuối; mã xử lý tệp không thay đổi. API Governance bản cuối được kiểm tra riêng, không tải tệp: [api-final.json](acceptance/api-final.json).
 - Qua UI bản cuối: A từ đầu vào → trình → trả lại → v2 → duyệt → thực nhận → Kho vận/Kế toán/QA → đóng. B từ đầu vào → 80/90/50 → Phân xưởng/KH-TM → duyệt có điều kiện → chặn nguồn chưa sẵn sàng → đủ nguồn → chặn thiếu chuyển kỳ → đủ liên kết → đóng. Đã mở tờ trình HTML và kiểm tra hai đợt, phần chuyển kỳ, cân đối, xác nhận.
 - **Giới hạn tải tệp UI:** trình duyệt từ chối quyền tải file khi thử nút JSON. Đã dừng bước tải, không coi đây là PASS và không thử đường vòng. Chưa nghiệm thu thao tác lưu PDF qua hộp thoại hệ điều hành. Bộ tạo HTML/JSON vẫn được kiểm tra nội dung bằng test và dữ liệu đã có trước bước từ chối.
-- **Gemini thật chưa chạy** vì không có key được cấu hình cho lượt này. Ca thành công/lỗi/format/nguồn dùng mock và ghi rõ trong tên test. Không có kết quả token/chi phí thực tế được tuyên bố.
+- **Gemini:** lượt nghiệm thu 29/10 chưa có key, nên các ca tự động dùng mock. Bổ sung ngày 30/10: thử trực tiếp bằng dữ liệu giả lập, gồm hồ sơ chưa lưu phương án và phương án B; `gemini-3.5-flash-lite` đều trả thành công, ba nhận định C1–C3 qua kiểm tra nguồn. Backend local báo đã nạp `.dev.vars`; khóa chỉ nằm ở cấu hình cục bộ bị Git bỏ qua. Đây là kiểm tra kết nối/demo, không phải đánh giá độ đúng nội dung, chi phí hay kết quả pilot.
 
 ## Ma trận yêu cầu → hiện thực → phép thử
 
@@ -31,7 +31,7 @@ Ngày kiểm tra: **29/10/2026**. Mã nguồn chức năng: **a69670b**. Bộ ch
 | V5 | Evidence version + executionId; dùng lại cần lý do và vai trò chuyên môn; không tự nâng chứng từ cũ | 29–30, 57, 64, 66 |
 | R1–R4 | Bảy vai trò mô phỏng; năm xác nhận đầu vào riêng; A/B và thực nhận đúng bộ phận; backend kiểm tra vai trò; UI ghi rõ mô phỏng | 17, 38–39, 46, 66; UI A/B |
 | AI1–AI2 | Thân tờ trình chỉ accepted/edited; Review_Log có trước/sau, DATA/RULE/LLM/FLOW, lý do, người, phiên bản | 42–43 |
-| AI3–AI6 | Cấu hình và kết quả riêng; model phản hồi/token nếu có; gửi số khóa/lịch/phương án/nguồn; kiểm tra trường/nguồn; vẫn pending | 49–55, 68 (mock; không phải Gemini thật) |
+| AI3–AI6 | Cấu hình và kết quả riêng; model phản hồi/token nếu có; gửi số khóa/lịch/phương án/nguồn; kiểm tra trường/nguồn; vẫn pending | 49–55, 68 (mock) + kiểm tra kết nối Gemini thật 30/10 |
 | F1 | DATA_HOLD vẫn có risk_notice, người và hạn; không có số chính thức | 12, 44 |
 | F2–F3 | close_verified cần cân đối mới đủ, căn cứ và GĐ; closeKind khác thực thi và không cộng KPI thực thi | 45; UI có nhánh riêng |
 | F4 | A: đủ lượng, kịp hạn, order/receipt/release cùng version/receiptId, Kho vận/Kế toán/QA đúng lần nhận; đổi lượng/ngày hủy xác nhận | 19, 22, 30, 46, 64; UI A |

@@ -1,4 +1,4 @@
 # Để trống vẫn quay được toàn bộ demo bằng nhận định theo mẫu.
 # Copy thành .dev.vars rồi điền khóa nếu muốn gọi Gemini thật.
 GEMINI_API_KEY=""
-GEMINI_MODEL="gemini-2.5-flash"
+GEMINI_MODEL="gemini-3.5-flash-lite"

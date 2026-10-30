@@ -27,13 +27,22 @@ Dành cho các thành viên đã clone repo, cài thư viện và chạy `setup`
    git pull --ff-only
    ```
 
-4. **Chạy app:**
+4. **Bật Gemini thật trên máy này (chỉ cần làm lần đầu):** tạo tệp cấu hình riêng rồi mở để điền khóa API Gemini của bạn:
+
+   ```powershell
+   if (-not (Test-Path .dev.vars)) { Copy-Item .dev.vars.example .dev.vars }
+   notepad .dev.vars
+   ```
+
+   Dán khóa vào giữa hai dấu ngoặc kép của `GEMINI_API_KEY=""`, giữ `GEMINI_MODEL="gemini-3.5-flash-lite"`, lưu tệp và đóng Notepad. **Không dán khóa vào README, mã nguồn, commit hoặc GitHub.** Mỗi thành viên cần cấu hình `.dev.vars` riêng; `git pull` không tải khóa về. Nếu máy đã có `.dev.vars` thì không cần làm lại bước này. Sau khi đổi khóa hoặc model, dừng server bằng **Ctrl+C** rồi chạy lại.
+
+5. **Chạy app:**
 
    ```powershell
    npm.cmd run dev
    ```
 
-5. **Mở địa chỉ `Local` được in trong PowerShell**, thường là **http://127.0.0.1:5173/**. Giữ cửa sổ PowerShell đang chạy trong lúc dùng app. Nhấn **Ctrl+C** khi muốn dừng.
+6. **Mở địa chỉ `Local` được in trong PowerShell**, thường là **http://127.0.0.1:5173/**. Giữ cửa sổ PowerShell đang chạy trong lúc dùng app. Trong hồ sơ, lưu phương án rồi bấm **Soạn nhận định**: giao diện cần hiện **Gemini thành công**; các nhận định vẫn phải được người phụ trách kiểm tra. Nhấn **Ctrl+C** khi muốn dừng.
 
 Tóm tắt các lệnh, chạy lần lượt sau khi mở PowerShell tại thư mục chứa repo:
 
@@ -43,7 +52,7 @@ git pull --ff-only
 npm.cmd run dev
 ```
 
-`npm.cmd run dev` tương đương `npm run dev`, đồng thời tránh lỗi PowerShell chặn `npm.ps1`. Các bản sửa giao diện hoặc logic thông thường chỉ cần các bước trên, không cần clone hay cài đặt lại. Nếu bản cập nhật có thay đổi thư viện hoặc cấu trúc database, chạy thêm `npm.cmd ci` hoặc `npm.cmd run setup` theo hướng dẫn đi kèm bản cập nhật, trước khi chạy app.
+`npm.cmd run dev` tương đương `npm run dev`, đồng thời tránh lỗi PowerShell chặn `npm.ps1`. Tệp `.dev.vars` được giữ trên máy khi cập nhật Git, nên những lần sau chỉ cần ba lệnh tóm tắt ở trên. Bản cập nhật Gemini này không đổi thư viện hay bảng SQL; không cần cài đặt lại. Nếu bản cập nhật sau có thay đổi thư viện hoặc cấu trúc database, chạy thêm `npm.cmd ci` hoặc `npm.cmd run setup` theo hướng dẫn đi kèm bản cập nhật, trước khi chạy app.
 
 **Riêng bản nâng Governance v2:** không đổi thư viện hoặc bảng SQL. Dữ liệu cũ được giữ; hồ sơ mở cần xem xét lại, không tự cấp xác nhận mới. Nếu muốn quay mới, sao lưu JSON rồi dùng “Đặt lại kịch bản” trong app. Đọc [quy trình.md](quy%20tr%C3%ACnh.md) vì các nút và vai trò B đã thay đổi.
 
@@ -137,10 +146,10 @@ Copy `.dev.vars.example` thành `.dev.vars`, điền:
 
 ```text
 GEMINI_API_KEY="your-key"
-GEMINI_MODEL="gemini-2.5-flash"
+GEMINI_MODEL="gemini-3.5-flash-lite"
 ```
 
-Khởi động lại server rồi bấm **Soạn nhận định**. Key chỉ dùng ở backend; không commit `.dev.vars`. Có thể thay model bằng tên model tài khoản được quyền sử dụng. Khi bật Gemini, các số liệu khóa của hồ sơ được gửi đến Google; dùng dữ liệu giả lập để quay demo.
+Khởi động lại server rồi bấm **Soạn nhận định** sau khi đã lưu phương án. Key chỉ dùng ở backend; không commit `.dev.vars`. Model `gemini-2.5-flash` có thể trả 404 với dự án mới, nên bản demo dùng `gemini-3.5-flash-lite` đã được thử với khóa của nhóm. Có thể thay model bằng tên model tài khoản được quyền sử dụng. Khi bật Gemini, các số liệu khóa của hồ sơ được gửi đến Google; dùng dữ liệu giả lập để quay demo. Nếu giao diện hiện **mẫu dự phòng**, kiểm tra mạng, hạn mức và tên model; mã lỗi nằm ở nhật ký AI của hồ sơ.
 
 ## Kiểm tra
 

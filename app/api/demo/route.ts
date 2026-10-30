@@ -28,7 +28,7 @@ export async function read(id: string): Promise<State> {
     }
     if (!row)
         throw new Error('Không thể khởi tạo database.');
-    return { ...upgrade({ ...JSON.parse(row.payload), revision: row.revision }), aiConfig: { status: env.GEMINI_API_KEY ? 'Đã cấu hình · chưa gọi' : 'Chưa cấu hình', model: env.GEMINI_MODEL || 'gemini-2.5-flash' } };
+    return { ...upgrade({ ...JSON.parse(row.payload), revision: row.revision }), aiConfig: { status: env.GEMINI_API_KEY ? 'Đã cấu hình · chưa gọi' : 'Chưa cấu hình', model: env.GEMINI_MODEL || 'gemini-3.5-flash-lite' } };
 }
 export async function GET(request: Request) {
     try {
